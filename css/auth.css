@@ -1,0 +1,295 @@
+/* ==========================================================================
+   Authentication (Login & Signup) & Custom 404 Page Styles
+   Matches uploaded reference screenshots adapted to STACKLY Navy/Ivory/Gold
+   ========================================================================== */
+
+.auth-page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: clip;
+  background-color: var(--ivory);
+}
+
+/* Subtle diagonal split backdrop inspired by reference screenshot + corporate imagery */
+.auth-bg-split {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 8% 92%, rgba(185, 154, 98, 0.22) 0%, transparent 42%),
+    linear-gradient(135deg, var(--ivory) 0%, #FFFFFF 100%);
+}
+
+.auth-bg-split--signup {
+  background:
+    radial-gradient(circle at 92% 12%, rgba(185, 154, 98, 0.22) 0%, transparent 42%),
+    linear-gradient(135deg, var(--ivory-deep) 0%, var(--ivory) 100%);
+}
+
+.auth-bg-panel {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.14;
+  clip-path: polygon(58% 0, 100% 0, 100% 100%, 48% 100%);
+}
+
+.auth-bg-panel--left {
+  clip-path: polygon(0 0, 44% 0, 52% 100%, 0 100%);
+}
+
+@media (max-width: 767px) {
+  .auth-bg-panel,
+  .auth-bg-panel--left {
+    clip-path: none;
+    opacity: 0.08;
+  }
+}
+
+.auth-topbar {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding: 1.25rem clamp(1rem, 4vw, 3rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.auth-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--navy);
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius-sm);
+}
+
+.auth-back-link:hover {
+  color: var(--gold-hover);
+  background-color: rgba(20, 38, 61, 0.05);
+}
+
+.auth-logo img {
+  height: 32px;
+  width: auto;
+}
+
+@media (min-width: 640px) {
+  .auth-logo img {
+    height: 36px;
+  }
+}
+
+.auth-stage {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 1rem 3rem;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(20, 38, 61, 0.09);
+  border-radius: 20px;
+  padding: clamp(1.75rem, 4vw, 2.6rem);
+  box-shadow: 0 24px 64px rgba(20, 38, 61, 0.12);
+}
+
+.auth-card-head {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.auth-card-head h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+
+.auth-card-head p {
+  font-size: 0.92rem;
+  color: var(--navy-tint);
+  margin: 0;
+}
+
+.auth-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.auth-forgot-link {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--gold-hover);
+}
+
+.auth-forgot-link:hover {
+  color: var(--navy);
+  text-decoration: underline;
+}
+
+.input-icon-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon-wrap .field-icon {
+  position: absolute;
+  left: 0.95rem;
+  color: rgba(20, 38, 61, 0.48);
+  font-size: 0.95rem;
+  pointer-events: none;
+}
+
+.input-icon-wrap .form-control {
+  padding-left: 2.65rem;
+  padding-right: 2.65rem;
+  border-radius: 10px;
+  background-color: #FAF9F6;
+}
+
+.input-icon-wrap select.form-control {
+  appearance: none;
+  cursor: pointer;
+}
+
+.select-caret {
+  position: absolute;
+  right: 1rem;
+  color: rgba(20, 38, 61, 0.55);
+  pointer-events: none;
+  font-size: 0.85rem;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 0.75rem;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  color: rgba(20, 38, 61, 0.55);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+}
+
+.password-toggle:hover {
+  color: var(--navy);
+}
+
+.auth-submit-btn {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 0.4rem;
+  border-radius: 10px;
+  background-color: var(--navy);
+  color: var(--ivory);
+  border: 1.5px solid var(--navy);
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.auth-submit-btn:hover {
+  background-color: var(--navy-deep);
+  border-color: var(--gold);
+  box-shadow: 0 10px 26px rgba(20, 38, 61, 0.22);
+  transform: translateY(-1px);
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 1.35rem;
+  font-size: 0.9rem;
+  color: var(--navy-tint);
+}
+
+.auth-switch a {
+  font-weight: 700;
+  color: var(--navy);
+  border-bottom: 1.5px solid var(--gold);
+}
+
+.auth-switch a:hover {
+  color: var(--gold-hover);
+}
+
+/* ==========================================================================
+   Custom 404 Page
+   ========================================================================== */
+.error-404-hero {
+  min-height: 100dvh;
+  padding: calc(var(--header-height) + 2rem) 0 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--navy-deep);
+}
+
+.error-404-hero .page-hero-overlay {
+  background: radial-gradient(circle at 50% 45%, rgba(15, 29, 48, 0.72) 0%, rgba(12, 24, 40, 0.9) 100%);
+}
+
+.error-404-hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.error-404-code {
+  font-family: var(--font-serif);
+  font-size: clamp(5.5rem, 16vw, 11.5rem);
+  line-height: 0.92;
+  color: rgba(246, 244, 239, 0.42);
+  letter-spacing: 0.04em;
+  position: relative;
+  margin-bottom: 0.4rem;
+  user-select: none;
+  text-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.error-404-code span {
+  color: var(--gold);
+  opacity: 0.96;
+}
+
+.error-404-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.95rem, 4.4vw, 3.35rem);
+  color: var(--ivory);
+  letter-spacing: 0.04em;
+  margin-bottom: 1rem;
+}
+
+.error-404-text {
+  font-size: clamp(0.98rem, 1.3vw, 1.12rem);
+  color: var(--ivory-muted);
+  max-width: 580px;
+  margin: 0 auto 2rem;
+}
+

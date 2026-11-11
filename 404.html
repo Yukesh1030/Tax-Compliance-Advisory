@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Page Out of Scope | STACKLY Tax &amp; Compliance Advisory</title>
+  <meta name="description" content="The requested resource is unavailable or outside scope. Return to STACKLY Tax &amp; Compliance Advisory." />
+  <link rel="icon" type="image/webp" href="assets/icons/favicon.webp" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container navbar-inner">
+      <a href="index.html" class="brand-logo" aria-label="STACKLY Home">
+        <img src="assets/Brand-logo.webp" alt="STACKLY Tax &amp; Compliance Advisory" />
+      </a>
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="industries.html" class="nav-link">Industries</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="login.html" class="nav-login-btn"><i class="fa-regular fa-user"></i><span>Login</span></a>
+        <button type="button" class="hamburger-btn" id="hamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileDrawer">
+          <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile Navigation" aria-hidden="true">
+    <div class="mobile-drawer-head">
+      <a href="index.html" class="brand-logo"><img src="assets/Brand-logo.webp" alt="STACKLY" /></a>
+      <button type="button" class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close navigation menu"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <nav class="mobile-nav-list">
+      <a href="index.html" class="mobile-nav-link"><span>Home</span><i class="fa-solid fa-chevron-right"></i></a>
+      <a href="about.html" class="mobile-nav-link"><span>About Us</span><i class="fa-solid fa-chevron-right"></i></a>
+      <a href="services.html" class="mobile-nav-link"><span>Services</span><i class="fa-solid fa-chevron-right"></i></a>
+      <a href="industries.html" class="mobile-nav-link"><span>Industries</span><i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link"><span>Contact</span><i class="fa-solid fa-chevron-right"></i></a>
+    </nav>
+    <div class="mobile-drawer-actions">
+      <a href="login.html" class="btn btn-gold"><i class="fa-regular fa-user"></i><span>Client &amp; Admin Login</span></a>
+    </div>
+  </aside>
+
+  <main>
+    <section class="error-404-hero">
+      <div class="page-hero-bg" style="background-image: url('assets/images/hero/404-hero.webp');"></div>
+      <div class="page-hero-overlay"></div>
+
+      <div class="container">
+        <div class="hero-center-box" id="error404Box">
+          <div class="error-404-code" aria-hidden="true">4<span>0</span>4</div>
+          <div class="hero-gold-line error-404-divider"></div>
+          <h1 class="error-404-heading">THIS PAGE IS OUT OF SCOPE.</h1>
+          <p class="error-404-text">
+            The page you are looking for may have moved or is no longer available. Let&apos;s help you find the right direction.
+          </p>
+          <div class="hero-actions error-404-actions">
+            <button type="button" id="goBackBtn" class="btn btn-outline-ivory magnetic-btn">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span>Back</span>
+            </button>
+            <a href="index.html" class="btn btn-gold magnetic-btn">
+              <i class="fa-solid fa-house"></i>
+              <span>Back to Home</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/gsap.min.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/animations.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var backBtn = document.getElementById("goBackBtn");
+      if (backBtn) {
+        backBtn.addEventListener("click", function () {
+          if (window.history.length > 1 && document.referrer) {
+            window.history.back();
+          } else {
+            window.location.href = "index.html";
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
+

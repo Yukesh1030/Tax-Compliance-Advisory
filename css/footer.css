@@ -1,0 +1,202 @@
+/* ==========================================================================
+   Four-Column Corporate Footer
+   ========================================================================== */
+
+.site-footer {
+  background-color: var(--navy-deep);
+  color: var(--ivory);
+  border-top: 2px solid rgba(185, 154, 98, 0.42);
+  padding-top: clamp(3.5rem, 6vw, 5rem);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 3rem);
+  padding-bottom: clamp(2.5rem, 4.5vw, 3.75rem);
+  border-bottom: 1px solid rgba(185, 154, 98, 0.22);
+}
+
+@media (min-width: 640px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1.35fr 0.85fr 1fr 1.1fr;
+  }
+}
+
+.footer-brand-logo {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.footer-brand-logo img {
+  height: 38px;
+  width: auto;
+}
+
+.footer-tagline {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--gold-light);
+  margin: 0 0 0.75rem;
+}
+
+.footer-about {
+  font-size: 0.9rem;
+  color: var(--ivory-muted);
+  line-height: 1.68;
+  margin: 0 0 1.4rem;
+  max-width: 340px;
+}
+
+/* Social Media Icons (All linked to 404.html per navigation spec) */
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(185, 154, 98, 0.42);
+  background-color: rgba(246, 244, 239, 0.04);
+  color: var(--ivory);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.social-btn:hover,
+.social-btn:focus-visible {
+  background-color: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy-deep);
+  transform: translateY(-2px);
+}
+
+.footer-heading {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--ivory);
+  margin-bottom: 1.15rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid rgba(185, 154, 98, 0.28);
+  display: inline-block;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.91rem;
+  color: var(--ivory-muted);
+}
+
+.footer-links a::before {
+  content: "";
+  width: 6px;
+  height: 1.5px;
+  background-color: var(--gold);
+  transition: width 0.25s ease;
+}
+
+.footer-links a:hover {
+  color: var(--gold-light);
+}
+
+.footer-links a:hover::before {
+  width: 12px;
+}
+
+.footer-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 1.15rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(246, 244, 239, 0.1);
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.87rem;
+  color: var(--ivory-muted);
+}
+
+.footer-contact-item i {
+  color: var(--gold);
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+/* Bottom Footer */
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-block: 1.5rem;
+  font-size: 0.84rem;
+  color: rgba(246, 244, 239, 0.68);
+}
+
+@media (min-width: 900px) {
+  .footer-bottom {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1.35rem;
+}
+
+.footer-legal a:hover {
+  color: var(--gold-light);
+}
+
+.back-to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(185, 154, 98, 0.4);
+  background: transparent;
+  color: var(--gold-light);
+  font-size: 0.82rem;
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+@media (min-width: 900px) {
+  .back-to-top {
+    align-self: center;
+  }
+}
+
+.back-to-top:hover {
+  background-color: var(--gold);
+  color: var(--navy-deep);
+}
+

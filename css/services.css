@@ -1,0 +1,99 @@
+/* ==========================================================================
+   Services & Service Details Page Styles
+   ========================================================================== */
+
+.service-modules-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .service-modules-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-modules-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.service-detail-band {
+  padding-block: clamp(3rem, 5vw, 4.5rem);
+  border-bottom: 1px solid rgba(20, 38, 61, 0.1);
+}
+
+.service-detail-band:last-of-type {
+  border-bottom: none;
+}
+
+.deliverables-box {
+  background-color: var(--ivory-card);
+  border: 1px solid rgba(20, 38, 61, 0.1);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--radius-md);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  box-shadow: var(--shadow-sm);
+}
+
+.deliverables-box--dark {
+  background-color: rgba(246, 244, 239, 0.06);
+  border-color: rgba(185, 154, 98, 0.3);
+  color: var(--ivory);
+}
+
+.deliverables-box--dark h3,
+.deliverables-box--dark h4 {
+  color: var(--ivory);
+}
+
+.faq-list {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.faq-item {
+  background-color: var(--ivory-card);
+  border: 1px solid rgba(20, 38, 61, 0.12);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.faq-trigger {
+  width: 100%;
+  text-align: left;
+  padding: 1.15rem 1.35rem;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--navy);
+}
+
+.faq-trigger i {
+  color: var(--gold);
+  transition: transform 0.28s ease;
+  flex-shrink: 0;
+}
+
+.faq-item.is-open .faq-trigger i {
+  transform: rotate(180deg);
+}
+
+.faq-panel {
+  display: none;
+  padding: 0 1.35rem 1.25rem;
+  color: var(--navy-tint);
+  font-size: 0.95rem;
+}
+
+.faq-item.is-open .faq-panel {
+  display: block;
+}
+

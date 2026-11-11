@@ -1,0 +1,105 @@
+/* ==========================================================================
+   Contact Page & Regional Branch Offices Styles
+   ========================================================================== */
+
+.contact-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.35rem;
+}
+
+@media (min-width: 640px) {
+  .contact-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.branch-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.35rem;
+}
+
+@media (min-width: 768px) {
+  .branch-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.branch-card {
+  background-color: var(--navy);
+  color: var(--ivory);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-md);
+  padding: 1.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.branch-card h3 {
+  color: var(--gold-light);
+  font-size: 1.32rem;
+}
+
+.branch-card p {
+  color: var(--ivory-muted);
+  font-size: 0.94rem;
+  margin: 0;
+  line-height: 1.65;
+}
+
+.branch-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.4rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(185, 154, 98, 0.22);
+  font-size: 0.86rem;
+  color: var(--ivory);
+}
+
+.branch-meta i {
+  color: var(--gold);
+  margin-right: 0.35rem;
+}
+
+.contact-form-panel {
+  background-color: var(--ivory-card);
+  border: 1px solid rgba(20, 38, 61, 0.12);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--radius-md);
+  padding: clamp(1.5rem, 3.2vw, 2.5rem);
+  box-shadow: var(--shadow-md);
+}
+
+.form-two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .form-two-col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.support-desk-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .support-desk-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+

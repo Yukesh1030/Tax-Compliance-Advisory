@@ -1,0 +1,36 @@
+/* ==========================================================================
+   GSAP, ScrollTrigger & Motion Supporting Styles
+   ========================================================================== */
+
+.reveal-clip {
+  overflow: hidden;
+  display: block;
+}
+
+.gold-shimmer {
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Smooth pointer magnetic hover transition (desktop only) */
+.magnetic-btn {
+  will-change: transform;
+}
+
+/* Reduced Motion Respect */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .page-hero-bg {
+    transform: none !important;
+  }
+}
+

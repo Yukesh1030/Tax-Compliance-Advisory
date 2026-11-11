@@ -1,0 +1,97 @@
+/* ==========================================================================
+   About Us Page Styles
+   ========================================================================== */
+
+.story-timeline {
+  display: grid;
+  gap: 1.25rem;
+  position: relative;
+  padding-left: 1.75rem;
+  border-left: 2px solid var(--gold-border);
+}
+
+.story-milestone {
+  position: relative;
+  background-color: var(--ivory-card);
+  border: 1px solid rgba(20, 38, 61, 0.1);
+  border-radius: var(--radius-md);
+  padding: 1.35rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.story-milestone::before {
+  content: "";
+  position: absolute;
+  left: -2.25rem;
+  top: 1.55rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--gold);
+  border: 3px solid var(--ivory);
+  box-shadow: 0 0 0 2px var(--gold);
+}
+
+.story-year {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-hover);
+  margin-bottom: 0.3rem;
+}
+
+.mission-vision-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .mission-vision-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.mv-card {
+  padding: clamp(1.75rem, 3.5vw, 2.5rem);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gold-border);
+}
+
+.mv-card--navy {
+  background-color: var(--navy);
+  color: var(--ivory);
+}
+
+.mv-card--navy h3 {
+  color: var(--ivory);
+}
+
+.mv-card--navy p {
+  color: var(--ivory-muted);
+}
+
+.mv-card--ivory {
+  background-color: var(--ivory-card);
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .values-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+

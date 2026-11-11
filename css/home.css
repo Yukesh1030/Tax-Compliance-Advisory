@@ -1,0 +1,687 @@
+/* ==========================================================================
+   Home Page — 10 Editorial Sections + Hero Styles
+   ========================================================================== */
+
+/* 01. Our Advisory Services */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.service-card .card-link {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.services-feature-banner {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: var(--navy);
+  color: var(--ivory);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--gold-border);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (min-width: 900px) {
+  .services-feature-banner {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+.services-feature-body {
+  padding: clamp(1.75rem, 3.5vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.services-feature-body h3 {
+  color: var(--ivory);
+  font-size: clamp(1.5rem, 2.3vw, 2rem);
+  margin-bottom: 0.85rem;
+}
+
+.services-feature-body p {
+  color: var(--ivory-muted);
+  margin: 0 0 1.5rem;
+}
+
+.services-feature-img {
+  min-height: 240px;
+}
+
+.services-feature-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 02. Tax Planning & Strategy */
+.strategy-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.strategy-metric {
+  background-color: var(--ivory-card);
+  border: 1px solid rgba(20, 38, 61, 0.1);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.15rem;
+}
+
+.strategy-metric strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  color: var(--navy);
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+
+.strategy-metric span {
+  font-size: 0.84rem;
+  color: var(--navy-tint);
+}
+
+/* 03. Compliance Without Complexity */
+.compliance-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 3.75rem);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .compliance-grid {
+    grid-template-columns: 0.95fr 1.05fr;
+  }
+}
+
+.compliance-timeline {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.compliance-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+  padding: 1.15rem 1.25rem;
+  border-radius: var(--radius-md);
+  background-color: rgba(246, 244, 239, 0.05);
+  border: 1px solid rgba(185, 154, 98, 0.24);
+  transition: border-color 0.28s ease, background-color 0.28s ease;
+}
+
+.compliance-step:hover {
+  border-color: var(--gold);
+  background-color: rgba(185, 154, 98, 0.1);
+}
+
+.compliance-step-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--gold);
+  color: var(--navy-deep);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.88rem;
+  flex-shrink: 0;
+}
+
+.compliance-step h3 {
+  font-size: 1.14rem;
+  margin-bottom: 0.3rem;
+}
+
+.compliance-step p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--ivory-muted);
+}
+
+/* 04. Industries We Serve */
+.industries-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .industries-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .industries-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.industry-tile {
+  background-color: var(--ivory-card);
+  border: 1px solid rgba(20, 38, 61, 0.1);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.industry-tile:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+  box-shadow: var(--shadow-md);
+}
+
+.industry-tile-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background-color: var(--gold-soft);
+  color: var(--navy);
+  border: 1px solid var(--gold-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.industry-tile h3 {
+  font-size: 1.18rem;
+}
+
+.industry-tile p {
+  font-size: 0.9rem;
+  color: var(--navy-tint);
+  margin: 0;
+}
+
+/* 05. Why Choose STACKLY */
+.why-stats-band {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.15rem;
+  margin-bottom: 2.25rem;
+}
+
+@media (min-width: 768px) {
+  .why-stats-band {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat-card {
+  background-color: var(--navy);
+  color: var(--ivory);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+}
+
+.stat-value {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  color: var(--gold-light);
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
+}
+
+.stat-label {
+  font-size: 0.86rem;
+  color: var(--ivory-muted);
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .pillars-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 06. Our Approach (5-Step Process Timeline) */
+.approach-timeline {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .approach-timeline {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
+}
+
+.approach-step {
+  background-color: rgba(246, 244, 239, 0.06);
+  border: 1px solid rgba(185, 154, 98, 0.28);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.approach-num {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.approach-step h3 {
+  font-size: 1.25rem;
+  color: var(--ivory);
+}
+
+.approach-step p {
+  font-size: 0.89rem;
+  color: var(--ivory-muted);
+  margin: 0;
+}
+
+/* 07. Meet Our Experts */
+.experts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .experts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .experts-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.expert-card {
+  background-color: var(--ivory-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(20, 38, 61, 0.1);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.expert-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--gold);
+}
+
+.expert-photo {
+  aspect-ratio: 4 / 4.2;
+  overflow: hidden;
+  background-color: var(--navy);
+}
+
+.expert-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.expert-card:hover .expert-photo img {
+  transform: scale(1.04);
+}
+
+.expert-body {
+  padding: 1.25rem 1.3rem 1.4rem;
+}
+
+.expert-role {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-hover);
+  margin-bottom: 0.35rem;
+}
+
+.expert-body h3 {
+  font-size: 1.24rem;
+  margin-bottom: 0.45rem;
+}
+
+.expert-body p {
+  font-size: 0.88rem;
+  color: var(--navy-tint);
+  margin: 0 0 0.85rem;
+}
+
+.expert-expertise {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--navy);
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(20, 38, 61, 0.1);
+}
+
+/* 08. Insights & Resources */
+.insights-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .insights-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.insight-card {
+  background-color: var(--ivory-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(20, 38, 61, 0.1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.insight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--gold);
+}
+
+.insight-thumb {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: var(--navy);
+}
+
+.insight-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.insight-body {
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.insight-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.78rem;
+  color: var(--navy-tint);
+  margin-bottom: 0.75rem;
+}
+
+.insight-body h3 {
+  font-size: 1.24rem;
+  margin-bottom: 0.65rem;
+}
+
+.insight-body p {
+  font-size: 0.92rem;
+  color: var(--navy-tint);
+  margin: 0 0 1.25rem;
+}
+
+.insight-body .card-link {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* 09. Client Testimonials */
+.testimonial-showcase {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .testimonial-showcase {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+
+.testimonial-slider-box {
+  background-color: var(--ivory-card);
+  border: 1px solid rgba(20, 38, 61, 0.12);
+  border-radius: var(--radius-md);
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.testimonial-quote-mark {
+  font-family: var(--font-serif);
+  font-size: 3.4rem;
+  line-height: 0.8;
+  color: var(--gold);
+  margin-bottom: 0.85rem;
+}
+
+.testimonial-slide {
+  display: none;
+}
+
+.testimonial-slide.is-active {
+  display: block;
+}
+
+.testimonial-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.18rem, 1.8vw, 1.48rem);
+  line-height: 1.45;
+  color: var(--navy);
+  margin: 0 0 1.4rem;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(20, 38, 61, 0.1);
+}
+
+.testimonial-author strong {
+  display: block;
+  font-size: 1rem;
+  color: var(--navy);
+}
+
+.testimonial-author span {
+  font-size: 0.86rem;
+  color: var(--navy-tint);
+}
+
+.testimonial-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.slider-dot-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(20, 38, 61, 0.22);
+  background-color: transparent;
+  color: var(--navy);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-dot-btn:hover {
+  background-color: var(--navy);
+  color: var(--gold);
+  border-color: var(--navy);
+}
+
+/* 10. Final Consultation CTA & Newsletter */
+.cta-band {
+  background-color: var(--navy);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--gold-border);
+  box-shadow: var(--shadow-lg);
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .cta-band {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+.cta-content {
+  padding: clamp(2rem, 4.5vw, 3.75rem);
+  color: var(--ivory);
+}
+
+.cta-content h2 {
+  color: var(--ivory);
+  font-size: clamp(1.85rem, 3vw, 2.75rem);
+  margin-bottom: 0.9rem;
+}
+
+.cta-content p {
+  color: var(--ivory-muted);
+  margin: 0 0 1.65rem;
+  max-width: 560px;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 500px;
+  margin-top: 1.75rem;
+}
+
+@media (min-width: 560px) {
+  .newsletter-form {
+    flex-direction: row;
+  }
+}
+
+.newsletter-form input {
+  flex: 1;
+  min-height: 48px;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(246, 244, 239, 0.3);
+  background-color: rgba(246, 244, 239, 0.08);
+  color: var(--ivory);
+}
+
+.newsletter-form input::placeholder {
+  color: rgba(246, 244, 239, 0.65);
+}
+
+.newsletter-form input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.newsletter-form input.is-invalid {
+  border-color: #F97066;
+  box-shadow: 0 0 0 3px rgba(249, 112, 102, 0.24);
+}
+
+.newsletter-form + .form-feedback {
+  max-width: 500px;
+}
+
+.cta-visual {
+  min-height: 280px;
+  position: relative;
+}
+
+.cta-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cta-contact-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(185, 154, 98, 0.25);
+  font-size: 0.9rem;
+  color: var(--ivory-muted);
+}
+
+.cta-contact-strip span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cta-contact-strip i {
+  color: var(--gold);
+}
+

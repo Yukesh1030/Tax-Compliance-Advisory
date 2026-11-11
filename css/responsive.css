@@ -1,0 +1,125 @@
+/* ==========================================================================
+   Global Responsive Rules across 320px, 375px, 390px, 414px, 768px, 1024px,
+   1280px, 1440px, and 1920px viewports
+   ========================================================================== */
+
+/* Small Mobile (<= 480px) */
+@media (max-width: 480px) {
+  :root {
+    --header-height: 70px;
+    --section-py: 3.35rem;
+  }
+
+  .page-hero {
+    min-height: 65svh;
+    padding: calc(var(--header-height) + 1.8rem) 0 3.2rem;
+  }
+
+  .page-hero--home {
+    min-height: 92svh;
+    padding: calc(var(--header-height) + 2rem) 0 4.5rem;
+  }
+
+  .hero-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn {
+    padding: 0.85rem 1.25rem;
+    font-size: 0.88rem;
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+/* Global Grid & Flex Child Overflow Guard */
+.grid > *,
+.split-grid > *,
+.footer-grid > *,
+.dash-grid-2 > *,
+.kpi-grid > *,
+.insights-grid > *,
+.team-grid > * {
+  min-width: 0;
+}
+
+/* Compact 320px Mobile Safeguard */
+@media (max-width: 359px) {
+  .container {
+    width: calc(100% - 1.5rem);
+  }
+
+  .strategy-metrics,
+  .sector-kpis,
+  .contact-mini-grid,
+  .slot-chips {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .newsletter-form .btn,
+  .article-prose pre,
+  .table-responsive {
+    max-width: 100%;
+  }
+}
+
+/* Mobile & Phablet (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .page-hero {
+    min-height: 68svh;
+  }
+
+  .hero-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .page-hero {
+    min-height: 70vh;
+  }
+}
+
+/* Large Desktop (1440px - 1920px+) */
+@media (min-width: 1440px) {
+  :root {
+    --container-max: 1340px;
+  }
+}
+
+@media (min-width: 1800px) {
+  :root {
+    --container-max: 1440px;
+  }
+}
+
+/* Touch device guard for hover/pointer effects */
+@media (hover: none) and (pointer: coarse) {
+  .card:hover,
+  .btn:hover {
+    transform: none;
+  }
+}
+
+/* Table Horizontal Scroll Wrapper */
+.table-responsive {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-sm);
+}
+

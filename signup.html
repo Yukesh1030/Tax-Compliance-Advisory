@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create an Account | STACKLY Tax &amp; Compliance Advisory</title>
+  <meta name="description" content="Create your STACKLY Client or Admin Advisory Portal account." />
+  <link rel="icon" type="image/webp" href="assets/icons/favicon.webp" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body class="auth-page">
+  <div class="auth-bg-split auth-bg-split--signup" aria-hidden="true">
+    <div class="auth-bg-panel auth-bg-panel--left" style="background-image: url('assets/images/hero/about-hero.webp');"></div>
+  </div>
+
+  <!-- Minimal Auth Top Bar (No Navbar, No Footer) -->
+  <header class="auth-topbar">
+    <a href="index.html" class="auth-back-link">
+      <i class="fa-solid fa-arrow-left"></i>
+      <span>Back to Home</span>
+    </a>
+    <a href="index.html" class="auth-logo" aria-label="STACKLY Home">
+      <img src="assets/images/brand-logo-navy.webp" alt="STACKLY" />
+    </a>
+  </header>
+
+  <main class="auth-stage">
+    <section class="auth-card" id="authCard" aria-labelledby="signupTitle">
+      <div class="auth-card-head">
+        <h1 id="signupTitle">Create an Account</h1>
+        <p>Join STACKLY Advisory Portal today</p>
+      </div>
+
+      <form id="signupForm" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="signupAs">Sign Up As</label>
+          <div class="input-icon-wrap">
+            <i class="fa-regular fa-user field-icon"></i>
+            <select class="form-control" id="signupAs" name="signupAs" required>
+              <option value="Client" selected>Client</option>
+              <option value="Admin">Admin</option>
+            </select>
+            <i class="fa-solid fa-chevron-down select-caret"></i>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="signupFullName">Full Name</label>
+          <div class="input-icon-wrap">
+            <i class="fa-regular fa-user field-icon"></i>
+            <input
+              type="text"
+              class="form-control"
+              id="signupFullName"
+              name="fullName"
+              placeholder="John Doe"
+              autocomplete="name"
+              data-minlength="2"
+              data-required-msg="Full name is required."
+              required
+            />
+          </div>
+          <span class="form-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="signupEmail">Email Address</label>
+          <div class="input-icon-wrap">
+            <i class="fa-regular fa-envelope field-icon"></i>
+            <input
+              type="email"
+              class="form-control"
+              id="signupEmail"
+              name="email"
+              placeholder="user@example.com"
+              autocomplete="email"
+              data-required-msg="Valid email address is required."
+              required
+            />
+          </div>
+          <span class="form-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="signupPassword">Password</label>
+          <div class="input-icon-wrap">
+            <i class="fa-solid fa-lock field-icon"></i>
+            <input
+              type="password"
+              class="form-control"
+              id="signupPassword"
+              name="password"
+              placeholder="••••••••"
+              autocomplete="new-password"
+              data-minlength="6"
+              data-required-msg="Create a password (min. 6 characters)."
+              required
+            />
+            <button type="button" class="password-toggle" aria-label="Show password">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+          <span class="form-error"></span>
+        </div>
+
+        <button type="submit" class="auth-submit-btn">
+          <span>Sign Up</span>
+        </button>
+
+        <div class="form-feedback" id="signupFeedback" aria-live="polite"></div>
+      </form>
+
+      <p class="auth-switch">
+        Already have an account? <a href="login.html">Login here</a>
+      </p>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/gsap.min.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
+

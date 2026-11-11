@@ -1,0 +1,79 @@
+/* ==========================================================================
+   Industries Page Styles
+   ========================================================================== */
+
+.industry-overview-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.35rem;
+}
+
+@media (min-width: 768px) {
+  .industry-overview-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.sector-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 1.35rem;
+}
+
+.sector-card-panel {
+  background-color: var(--ivory-card);
+  border: 1px solid rgba(20, 38, 61, 0.12);
+  border-radius: var(--radius-md);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  box-shadow: var(--shadow-sm);
+}
+
+.sector-card-panel--navy {
+  background-color: var(--navy);
+  border-color: var(--gold-border);
+  color: var(--ivory);
+}
+
+.sector-card-panel--navy h3 {
+  color: var(--ivory);
+}
+
+.sector-card-panel--navy p {
+  color: var(--ivory-muted);
+}
+
+.sector-kpis {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+  margin-top: 1.25rem;
+}
+
+.sector-kpi {
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--ivory);
+  border: 1px solid rgba(20, 38, 61, 0.08);
+}
+
+.sector-card-panel--navy .sector-kpi {
+  background-color: rgba(246, 244, 239, 0.06);
+  border-color: rgba(185, 154, 98, 0.25);
+}
+
+.sector-kpi strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  color: var(--gold-hover);
+}
+
+.sector-card-panel--navy .sector-kpi strong {
+  color: var(--gold-light);
+}
+
+.sector-kpi span {
+  font-size: 0.82rem;
+}
+

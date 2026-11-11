@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Consultation Booking Page Styles
+   ========================================================================== */
+
+.consultation-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .consultation-layout {
+    grid-template-columns: 1.25fr 0.75fr;
+  }
+}
+
+.consultation-card {
+  background-color: var(--ivory-card);
+  border: 1px solid rgba(20, 38, 61, 0.12);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--radius-md);
+  padding: clamp(1.5rem, 3.2vw, 2.5rem);
+  box-shadow: var(--shadow-md);
+}
+
+.slot-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.slot-chip {
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(20, 38, 61, 0.22);
+  background-color: var(--ivory);
+  color: var(--navy);
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.slot-chip:hover,
+.slot-chip.is-selected {
+  background-color: var(--navy);
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+.consultation-summary-card {
+  background-color: var(--navy);
+  color: var(--ivory);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.consultation-summary-card h3 {
+  color: var(--gold-light);
+  margin-bottom: 1rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.7rem;
+  border-bottom: 1px solid rgba(246, 244, 239, 0.12);
+  font-size: 0.92rem;
+}
+
+.summary-row span {
+  color: var(--ivory-muted);
+}
+
+.summary-row strong {
+  color: var(--ivory);
+  text-align: right;
+}
+

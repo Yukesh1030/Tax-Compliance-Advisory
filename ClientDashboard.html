@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Advisory Portal | STACKLY Tax &amp; Compliance Advisory</title>
+  <meta name="description" content="STACKLY Client Dashboard for active advisory mandates, compliance calendars, secure document vault, and advisor communications." />
+  <link rel="icon" type="image/webp" href="assets/icons/favicon.webp" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body class="dashboard-body" id="clientDashboardApp">
+  <div class="dash-sidebar-backdrop" id="dashSidebarBackdrop"></div>
+
+  <div class="dashboard-shell">
+    <!-- Navy Sidebar (Exactly 5 Main Menus) -->
+    <aside class="dash-sidebar" id="dashSidebar" aria-label="Client Sidebar Navigation">
+      <div class="dash-brand">
+        <a href="index.html" aria-label="STACKLY Home">
+          <img src="assets/Brand-logo.webp" alt="STACKLY Tax &amp; Compliance Advisory" />
+        </a>
+        <button type="button" class="dash-close-btn" id="dashCloseBtn" aria-label="Close sidebar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="dash-role-chip">
+        <i class="fa-regular fa-building"></i>
+        <span>Client Advisory Portal</span>
+      </div>
+
+      <nav class="dash-nav" aria-label="Client Dashboard Sections">
+        <button type="button" class="dash-nav-btn is-active" data-tab="dashboard">
+          <i class="fa-solid fa-house"></i>
+          <span>Dashboard</span>
+        </button>
+        <button type="button" class="dash-nav-btn" data-tab="services">
+          <i class="fa-solid fa-briefcase"></i>
+          <span>My Services</span>
+        </button>
+        <button type="button" class="dash-nav-btn" data-tab="compliance">
+          <i class="fa-solid fa-folder-open"></i>
+          <span>Compliance &amp; Documents</span>
+        </button>
+        <button type="button" class="dash-nav-btn" data-tab="reports">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>Reports &amp; Insights</span>
+        </button>
+        <button type="button" class="dash-nav-btn" data-tab="profile">
+          <i class="fa-solid fa-headset"></i>
+          <span>Profile &amp; Support</span>
+        </button>
+      </nav>
+
+      <div class="dash-sidebar-footer">
+        <p class="dash-demo-note">Illustrative client portal demo. Filing dates and statuses represent sample prototype data.</p>
+        <button type="button" class="dash-logout-side" data-logout-btn>
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="dash-main">
+      <!-- Top Bar -->
+      <header class="dash-topbar">
+        <div class="dash-top-left">
+          <button type="button" class="dash-menu-toggle" id="dashMenuToggle" aria-label="Open menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="dash-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" id="clientSearchInput" placeholder="Search filings, documents, reports..." aria-label="Search client records" />
+          </div>
+        </div>
+
+        <div class="dash-top-actions">
+          <button type="button" class="dash-icon-btn" data-popover-target="clientNotifPopover" aria-label="Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <span class="dash-badge" id="clientNotifBadge">2</span>
+          </button>
+
+          <button type="button" class="dash-icon-btn" data-popover-target="clientMsgPopover" aria-label="Advisor Messages">
+            <i class="fa-regular fa-envelope"></i>
+            <span class="dash-badge">2</span>
+          </button>
+
+          <button type="button" class="dash-profile-btn" data-popover-target="clientProfilePopover" aria-label="Client Profile">
+            <span class="dash-avatar" id="clientProfileAvatar">AM</span>
+            <span class="dash-profile-name" id="clientProfileName">Arjun Mehta</span>
+            <i class="fa-solid fa-chevron-down" style="font-size: 0.72rem;"></i>
+          </button>
+
+          <button type="button" class="btn btn-navy" style="min-height: 40px; padding: 0.45rem 0.9rem; font-size: 0.82rem;" data-logout-btn>
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+          </button>
+
+          <div class="dash-popover" id="clientNotifPopover">
+            <div class="dash-popover-head"><span>Compliance Alerts (Demo)</span></div>
+            <div class="dash-popover-list" id="clientNotifList">
+              <div class="dash-popover-item"><strong>Upcoming GSTR-3B Reminder</strong><span>Sample target date: 20 May 2026</span></div>
+              <div class="dash-popover-item"><strong>Tax Computation Pack Ready</strong><span>Available in Reports &amp; Insights (Demo)</span></div>
+            </div>
+          </div>
+
+          <div class="dash-popover" id="clientMsgPopover">
+            <div class="dash-popover-head"><span>Advisor Messages (Demo)</span></div>
+            <div class="dash-popover-list" id="clientMessagesList">
+              <div class="dash-popover-item"><strong>Rajesh Nair (Partner)</strong><span>Q1 advance tax projection draft shared for sign-off.</span></div>
+              <div class="dash-popover-item"><strong>Meera Krishnan (GST Lead)</strong><span>All April supplier invoices reconciled cleanly.</span></div>
+            </div>
+          </div>
+
+          <div class="dash-popover" id="clientProfilePopover">
+            <div class="dash-popover-head"><span>Client Session</span></div>
+            <div class="dash-popover-item" style="margin-bottom: 0.75rem;">
+              <strong>Role: Client</strong>
+              <span id="clientProfileEmail">arjun.mehta@meridianprecision.in</span>
+            </div>
+            <a href="index.html" class="btn btn-outline-navy" style="width: 100%; min-height: 38px; padding: 0.4rem; margin-bottom: 0.5rem;">Public Website</a>
+            <button type="button" class="btn btn-gold" style="width: 100%; min-height: 38px; padding: 0.4rem;" data-logout-btn>Logout</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="dash-content">
+        <section class="dash-hero-strip">
+          <div>
+            <h1 id="clientWelcomeHeading">Welcome back, Arjun Mehta</h1>
+            <p>Meridian Precision Manufacturing (Sample Entity) &bull; Illustrative demo compliance workspace.</p>
+          </div>
+          <div class="dash-quick-actions">
+            <span class="tag-pill" style="background-color: rgba(185,154,98,0.2); color: var(--gold-light);">Demo Status Only</span>
+          </div>
+        </section>
+
+        <!-- TAB 1: Dashboard -->
+        <section class="dash-tab-panel is-active" data-panel="dashboard">
+          <div class="kpi-grid">
+            <article class="kpi-card">
+              <div>
+                <div class="kpi-label">Active Services</div>
+                <div class="kpi-value counter-value" data-target="4">4</div>
+                <div class="kpi-note">Sample &bull; Retainer active</div>
+              </div>
+              <div class="kpi-icon"><i class="fa-solid fa-briefcase"></i></div>
+            </article>
+            <article class="kpi-card">
+              <div>
+                <div class="kpi-label">Pending Documents</div>
+                <div class="kpi-value counter-value" id="clientKpiPendingDocs" data-target="3">3</div>
+                <div class="kpi-note">Sample &bull; Action requested</div>
+              </div>
+              <div class="kpi-icon"><i class="fa-solid fa-file-arrow-up"></i></div>
+            </article>
+            <article class="kpi-card">
+              <div>
+                <div class="kpi-label">Completed Tasks</div>
+                <div class="kpi-value counter-value" data-target="12">12</div>
+                <div class="kpi-note">Sample &bull; Verified filings</div>
+              </div>
+              <div class="kpi-icon"><i class="fa-solid fa-circle-check"></i></div>
+            </article>
+            <article class="kpi-card">
+              <div>
+                <div class="kpi-label">Upcoming Deadlines</div>
+                <div class="kpi-value counter-value" data-target="2">2</div>
+                <div class="kpi-note">Sample &bull; Next 15 days</div>
+              </div>
+              <div class="kpi-icon"><i class="fa-regular fa-calendar-days"></i></div>
+            </article>
+          </div>
+
+          <div class="dash-grid-2">
+            <article class="dash-panel">
+              <div class="dash-panel-head"><h2>Compliance Readiness Trend (Demo)</h2></div>
+              <div class="chart-box"><canvas id="clientComplianceChart"></canvas></div>
+            </article>
+            <article class="dash-panel">
+              <div class="dash-panel-head"><h2>Advisory Retainer Allocation (Demo)</h2></div>
+              <div class="chart-box"><canvas id="clientServiceMixChart"></canvas></div>
+            </article>
+          </div>
+
+          <div class="dash-grid-equal">
+            <article class="dash-panel">
+              <div class="dash-panel-head"><h3>Compliance Deadline Tracker (Sample)</h3></div>
+              <div class="table-responsive">
+                <table class="dash-table" style="min-width: 480px;">
+                  <thead><tr><th>Filing / Reminder</th><th>Target Date</th><th>Status</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong>GSTR-3B Monthly Return</strong></td><td>20 May 2026</td><td><span class="status-badge status-badge--gold">Review Ready</span></td></tr>
+                    <tr><td><strong>TDS Return Q4 (Form 26Q)</strong></td><td>31 May 2026</td><td><span class="status-badge status-badge--pending">Docs Pending</span></td></tr>
+                    <tr><td><strong>GSTR-1 Outward Supplies</strong></td><td>11 May 2026</td><td><span class="status-badge status-badge--done">Completed (Demo)</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="dash-panel">
+              <div class="dash-panel-head"><h3>Recent Advisor Communications (Demo)</h3></div>
+              <div class="dash-popover-list" style="max-height: none;">
+                <div class="dash-popover-item"><strong>Rajesh Nair &bull; Managing Partner</strong><span>Recommended advancing R&amp;D equipment depreciation review prior to Q1 installment.</span></div>
+                <div class="dash-popover-item"><strong>Meera Krishnan &bull; Senior Partner</strong><span>Uploaded Karnataka &amp; Tamil Nadu GSTR-2B variance report for approval.</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- TAB 2: My Services -->
+        <section class="dash-tab-panel" data-panel="services">
+          <article class="dash-panel">
+            <div class="dash-panel-head"><h2>Active Advisory Services (Demo)</h2></div>
+            <div class="table-responsive">
+              <table class="dash-table">
+                <thead><tr><th>Service Mandate</th><th>Lead Advisor</th><th>Cadence</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Direct Tax &amp; Corporate Advisory</strong></td><td>Rajesh Nair</td><td>Quarterly + Annual</td><td><span class="status-badge status-badge--done">Active</span></td></tr>
+                  <tr><td><strong>Indirect Tax &amp; Multi-State GST</strong></td><td>Meera Krishnan</td><td>Monthly</td><td><span class="status-badge status-badge--done">Active</span></td></tr>
+                  <tr><td><strong>ROC Secretarial Compliance</strong></td><td>Ananya Deshmukh</td><td>Event &amp; Annual</td><td><span class="status-badge status-badge--gold">Filing Open</span></td></tr>
+                  <tr><td><strong>Pre-Audit Financial Readiness</strong></td><td>Kavya Subramanian</td><td>Quarterly</td><td><span class="status-badge status-badge--done">Active</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- TAB 3: Compliance & Documents -->
+        <section class="dash-tab-panel" data-panel="compliance">
+          <div class="dash-grid-2">
+            <article class="dash-panel">
+              <div class="dash-panel-head"><h2>Document Vault (Demo)</h2></div>
+              <div class="table-responsive">
+                <table class="dash-table">
+                  <thead><tr><th>Document Name</th><th>Category</th><th>Updated</th><th>Status</th><th>Action</th></tr></thead>
+                  <tbody id="clientDocsTbody">
+                    <tr><td><strong>GSTR-2B Reconciliation April</strong></td><td>GST Records</td><td>May 2026</td><td><span class="status-badge status-badge--done">Verified (Demo)</span></td><td><button type="button" class="btn btn-outline-navy" style="min-height:32px;padding:0.25rem 0.7rem;font-size:0.78rem;" data-download-demo>Download</button></td></tr>
+                    <tr><td><strong>TDS Challan ITNS-281 Pack</strong></td><td>Direct Tax</td><td>May 2026</td><td><span class="status-badge status-badge--done">Verified (Demo)</span></td><td><button type="button" class="btn btn-outline-navy" style="min-height:32px;padding:0.25rem 0.7rem;font-size:0.78rem;" data-download-demo>Download</button></td></tr>
+                    <tr><td><strong>Board Resolution Register</strong></td><td>Regulatory</td><td>April 2026</td><td><span class="status-badge status-badge--pending">Upload Due</span></td><td><button type="button" class="btn btn-outline-navy" style="min-height:32px;padding:0.25rem 0.7rem;font-size:0.78rem;" data-download-demo>Template</button></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="dash-panel">
+              <div class="dash-panel-head"><h3>Upload Compliance Document (Demo)</h3></div>
+              <form id="clientUploadForm">
+                <div class="form-group">
+                  <label class="form-label" for="uploadDocTitle">Document Title</label>
+                  <input class="form-control" type="text" id="uploadDocTitle" required placeholder="e.g., May Bank Statement &amp; Purchase Register" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="uploadDocCategory">Category</label>
+                  <select class="form-control" id="uploadDocCategory">
+                    <option>GST Records</option>
+                    <option>Direct Tax</option>
+                    <option>ROC &amp; Regulatory</option>
+                    <option>Audit Working Papers</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="uploadDocFile">Select File (Simulated)</label>
+                  <input class="form-control" type="file" id="uploadDocFile" style="padding: 0.5rem;" />
+                </div>
+                <button type="submit" class="btn btn-navy" style="width: 100%;">Upload to Demo Vault</button>
+                <div class="form-feedback" id="uploadFeedback" aria-live="polite"></div>
+              </form>
+            </article>
+          </div>
+        </section>
+
+        <!-- TAB 4: Reports & Insights -->
+        <section class="dash-tab-panel" data-panel="reports">
+          <article class="dash-panel">
+            <div class="dash-panel-head"><h2>Executive Reports &amp; Advisory Statements (Demo)</h2></div>
+            <div class="table-responsive">
+              <table class="dash-table">
+                <thead><tr><th>Report Title</th><th>Period</th><th>Prepared By</th><th>Download</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Quarterly Effective Tax Rate Analysis</strong></td><td>Q4 FY25–26</td><td>Rajesh Nair</td><td><button type="button" class="btn btn-gold" style="min-height:32px;padding:0.25rem 0.75rem;font-size:0.78rem;" data-download-demo>Download PDF (Demo)</button></td></tr>
+                  <tr><td><strong>Multi-State GST ITC Health Statement</strong></td><td>FY 2025–26</td><td>Meera Krishnan</td><td><button type="button" class="btn btn-gold" style="min-height:32px;padding:0.25rem 0.75rem;font-size:0.78rem;" data-download-demo>Download PDF (Demo)</button></td></tr>
+                  <tr><td><strong>Annual Statutory Governance Scorecard</strong></td><td>FY 2025–26</td><td>Ananya Deshmukh</td><td><button type="button" class="btn btn-gold" style="min-height:32px;padding:0.25rem 0.75rem;font-size:0.78rem;" data-download-demo>Download PDF (Demo)</button></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- TAB 5: Profile & Support -->
+        <section class="dash-tab-panel" data-panel="profile">
+          <div class="dash-grid-equal">
+            <article class="dash-panel">
+              <div class="dash-panel-head"><h2>Client &amp; Company Profile (Demo)</h2></div>
+              <div class="form-group">
+                <label class="form-label" for="profileContactName">Authorised Signatory</label>
+                <input class="form-control" type="text" id="profileContactName" value="Arjun Mehta" readonly />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="profileContactEmail">Registered Email</label>
+                <input class="form-control" type="email" id="profileContactEmail" value="arjun.mehta@meridianprecision.in" readonly />
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" for="profileCompany">Entity &amp; Primary Branch</label>
+                <input class="form-control" type="text" id="profileCompany" value="Meridian Precision Manufacturing • Bengaluru Hub" readonly />
+              </div>
+            </article>
+
+            <article class="dash-panel">
+              <div class="dash-panel-head"><h2>Request Consultation or Support (Demo)</h2></div>
+              <form id="clientConsultForm" style="margin-bottom: 1.5rem;">
+                <div class="form-group">
+                  <label class="form-label" for="clientConsultTopic">Consultation Topic</label>
+                  <select class="form-control" id="clientConsultTopic">
+                    <option>Q1 Advance Tax &amp; Capex Review</option>
+                    <option>GST Input Tax Credit Clarification</option>
+                    <option>Board Secretarial Resolution Support</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-navy" style="width: 100%;">Request Advisor Call</button>
+                <div class="form-feedback" id="clientConsultFeedback" aria-live="polite"></div>
+              </form>
+
+              <form id="clientSupportForm">
+                <div class="form-group">
+                  <label class="form-label" for="clientSupportSubject">Support Ticket Subject</label>
+                  <input class="form-control" type="text" id="clientSupportSubject" required placeholder="e.g., Portal access for finance controller" />
+                </div>
+                <button type="submit" class="btn btn-outline-navy" style="width: 100%;">Submit Support Ticket (Demo)</button>
+                <div class="form-feedback" id="clientSupportFeedback" aria-live="polite"></div>
+              </form>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/gsap.min.js"></script>
+  <script src="js/counters.js"></script>
+  <script src="js/client-dashboard.js"></script>
+</body>
+</html>
+

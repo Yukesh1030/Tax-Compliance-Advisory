@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Login | STACKLY Tax &amp; Compliance Advisory</title>
+  <meta name="description" content="Sign in to your STACKLY Client or Admin Advisory Portal." />
+  <link rel="icon" type="image/webp" href="assets/icons/favicon.webp" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body class="auth-page">
+  <div class="auth-bg-split" aria-hidden="true">
+    <div class="auth-bg-panel" style="background-image: url('assets/images/hero/home-hero.webp');"></div>
+  </div>
+
+  <!-- Minimal Auth Top Bar (No Navbar, No Footer) -->
+  <header class="auth-topbar">
+    <a href="index.html" class="auth-back-link">
+      <i class="fa-solid fa-arrow-left"></i>
+      <span>Back to Home</span>
+    </a>
+    <a href="index.html" class="auth-logo" aria-label="STACKLY Home">
+      <img src="assets/images/brand-logo-navy.webp" alt="STACKLY" />
+    </a>
+  </header>
+
+  <main class="auth-stage">
+    <section class="auth-card" id="authCard" aria-labelledby="loginTitle">
+      <div class="auth-card-head">
+        <h1 id="loginTitle">Welcome Back</h1>
+        <p>Sign in to your account</p>
+      </div>
+
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="loginAs">Login As</label>
+          <div class="input-icon-wrap">
+            <i class="fa-regular fa-user field-icon"></i>
+            <select class="form-control" id="loginAs" name="loginAs" required>
+              <option value="Client" selected>Client</option>
+              <option value="Admin">Admin</option>
+            </select>
+            <i class="fa-solid fa-chevron-down select-caret"></i>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Email Address</label>
+          <div class="input-icon-wrap">
+            <i class="fa-regular fa-envelope field-icon"></i>
+            <input
+              type="email"
+              class="form-control"
+              id="loginEmail"
+              name="email"
+              placeholder="user@example.com"
+              autocomplete="email"
+              data-required-msg="Email address is required."
+              required
+            />
+          </div>
+          <span class="form-error"></span>
+        </div>
+
+        <div class="form-group">
+          <div class="auth-label-row">
+            <label class="form-label" for="loginPassword">Password</label>
+            <a href="404.html" class="auth-forgot-link">Forgot password?</a>
+          </div>
+          <div class="input-icon-wrap">
+            <i class="fa-solid fa-lock field-icon"></i>
+            <input
+              type="password"
+              class="form-control"
+              id="loginPassword"
+              name="password"
+              placeholder="••••••••"
+              autocomplete="current-password"
+              data-minlength="4"
+              data-required-msg="Password is required."
+              required
+            />
+            <button type="button" class="password-toggle" aria-label="Show password">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+          <span class="form-error"></span>
+        </div>
+
+        <button type="submit" class="auth-submit-btn">
+          <span>Login</span>
+        </button>
+
+        <div class="form-feedback" id="loginFeedback" aria-live="polite"></div>
+      </form>
+
+      <p class="auth-switch">
+        Don&apos;t have an account? <a href="signup.html">Create an account</a>
+      </p>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/gsap.min.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
+
