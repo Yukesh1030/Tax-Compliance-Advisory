@@ -12,25 +12,14 @@
     var profileAvatarEl = document.getElementById("dashProfileAvatar");
     var welcomeTitleEl = document.getElementById("dashWelcomeTitle");
 
-    try {
-      var session = JSON.parse(localStorage.getItem("stackly_session") || "{}");
-      var displayName = session.name || "Rajesh Nair";
-      if (profileNameEl) profileNameEl.textContent = displayName;
-      if (profileRoleEl) profileRoleEl.textContent = session.email || "partner@stacklytax.com";
-      if (profileAvatarEl) {
-        var initials = displayName
-          .split(" ")
-          .filter(Boolean)
-          .slice(0, 2)
-          .map(function (s) { return s[0].toUpperCase(); })
-          .join("");
-        profileAvatarEl.textContent = initials || "AD";
-      }
+    if (window.StacklySession) {
+      var identity = window.StacklySession.resolveIdentity("Admin");
+      if (profileNameEl) profileNameEl.textContent = identity.name;
+      if (profileRoleEl) profileRoleEl.textContent = identity.email;
+      if (profileAvatarEl) profileAvatarEl.textContent = identity.initials;
       if (welcomeTitleEl) {
-        welcomeTitleEl.textContent = "Practice Overview — " + displayName;
+        welcomeTitleEl.textContent = "Practice Overview — " + identity.name;
       }
-    } catch (e) {
-      /* Ignore storage parsing errors */
     }
 
     /* Mobile Sidebar Toggle */

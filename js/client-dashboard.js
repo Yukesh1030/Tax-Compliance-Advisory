@@ -14,25 +14,15 @@
     var profileFormName = document.getElementById("profileContactName");
     var profileFormEmail = document.getElementById("profileContactEmail");
 
-    try {
-      var session = JSON.parse(localStorage.getItem("stackly_session") || "{}");
-      var displayName = session.name || "Arjun Mehta";
-      var emailVal = session.email || "arjun.mehta@meridianprecision.in";
-      if (profileNameEl) profileNameEl.textContent = displayName;
-      if (profileEmailEl) profileEmailEl.textContent = emailVal;
-      if (profileAvatarEl) {
-        var initials = displayName
-          .split(" ")
-          .filter(Boolean)
-          .slice(0, 2)
-          .map(function (s) { return s[0].toUpperCase(); })
-          .join("");
-        profileAvatarEl.textContent = initials || "CL";
-      }
-      if (welcomeEl) welcomeEl.textContent = "Welcome back, " + displayName;
-      if (profileFormName) profileFormName.value = displayName;
-      if (profileFormEmail) profileFormEmail.value = emailVal;
-    } catch (e) {}
+    if (window.StacklySession) {
+      var identity = window.StacklySession.resolveIdentity("Client");
+      if (profileNameEl) profileNameEl.textContent = identity.name;
+      if (profileEmailEl) profileEmailEl.textContent = identity.email;
+      if (profileAvatarEl) profileAvatarEl.textContent = identity.initials;
+      if (welcomeEl) welcomeEl.textContent = "Welcome back, " + identity.name;
+      if (profileFormName) profileFormName.value = identity.name;
+      if (profileFormEmail) profileFormEmail.value = identity.email;
+    }
 
     /* Mobile Sidebar Toggle */
     var sidebar = document.getElementById("dashSidebar");

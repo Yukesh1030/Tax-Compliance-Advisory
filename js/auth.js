@@ -55,8 +55,11 @@
         var role = loginRole ? loginRole.value : "Client";
         var emailVal = loginEmail ? loginEmail.value.trim() : "client@stacklytax.com";
 
-        /* Retrieve registered name if matching email */
-        var displayName = role === "Admin" ? "Rajesh Nair (Managing Partner)" : "Arjun Mehta";
+        /* Derive display name dynamically from login email (or matching signup record) */
+        var emailDerivedName = window.StacklySession
+          ? window.StacklySession.formatNameFromEmail(emailVal)
+          : emailVal.split("@")[0];
+        var displayName = emailDerivedName || (role === "Admin" ? "Partner" : "Client");
         try {
           var regRaw = localStorage.getItem("stackly_registered_user");
           if (regRaw) {
