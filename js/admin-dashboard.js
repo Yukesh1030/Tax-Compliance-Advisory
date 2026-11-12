@@ -62,6 +62,10 @@
       });
     });
 
+    if (window.StacklySession && window.StacklySession.bindTabLinks) {
+      window.StacklySession.bindTabLinks(switchTab);
+    }
+
     /* Topbar Popovers (Notifications, Messages, Profile) */
     var popoverBtns = document.querySelectorAll("[data-popover-target]");
     var popovers = document.querySelectorAll(".dash-popover");
@@ -240,8 +244,12 @@
       }
     });
 
-    /* Chart.js Visualisations */
-    if (typeof Chart !== "undefined") {
+    /* Chart.js Visualisations (non-blocking if CDN loads after DOMContentLoaded) */
+    var chartsInitialized = false;
+    function initAdminCharts() {
+      if (chartsInitialized || typeof Chart === "undefined") return;
+      chartsInitialized = true;
+
       var engCanvas = document.getElementById("adminEngagementChart");
       if (engCanvas) {
         new Chart(engCanvas.getContext("2d"), {
@@ -302,6 +310,11 @@
         });
       }
     }
+
+    initAdminCharts();
+    var chartScriptEl = document.getElementById("chartjsScript");
+    if (chartScriptEl) chartScriptEl.addEventListener("load", initAdminCharts);
+    window.addEventListener("load", initAdminCharts);
   });
 })();
 

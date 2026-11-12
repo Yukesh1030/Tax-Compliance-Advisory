@@ -64,6 +64,10 @@
       });
     });
 
+    if (window.StacklySession && window.StacklySession.bindTabLinks) {
+      window.StacklySession.bindTabLinks(switchTab);
+    }
+
     /* Topbar Popovers */
     var popoverBtns = document.querySelectorAll("[data-popover-target]");
     var popovers = document.querySelectorAll(".dash-popover");
@@ -209,8 +213,12 @@
       });
     }
 
-    /* Chart.js Client Visualisations */
-    if (typeof Chart !== "undefined") {
+    /* Chart.js Client Visualisations (non-blocking if CDN loads after DOMContentLoaded) */
+    var chartsInitialized = false;
+    function initClientCharts() {
+      if (chartsInitialized || typeof Chart === "undefined") return;
+      chartsInitialized = true;
+
       var progCanvas = document.getElementById("clientComplianceChart");
       if (progCanvas) {
         new Chart(progCanvas.getContext("2d"), {
@@ -265,6 +273,11 @@
         });
       }
     }
+
+    initClientCharts();
+    var chartScriptEl = document.getElementById("chartjsScript");
+    if (chartScriptEl) chartScriptEl.addEventListener("load", initClientCharts);
+    window.addEventListener("load", initClientCharts);
   });
 })();
 

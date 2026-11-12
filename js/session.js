@@ -77,10 +77,27 @@
     };
   }
 
+  /** Wires dashboard logo/section links to activate their target tab smoothly. */
+  function bindTabLinks(switchTabFn) {
+    if (typeof switchTabFn !== "function") return;
+    document.querySelectorAll("[data-tab-link]").forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        var tabId = link.getAttribute("data-tab-link") || "dashboard";
+        e.preventDefault();
+        switchTabFn(tabId);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState(null, "", link.getAttribute("href") || "#dashboardSection");
+        }
+      });
+    });
+  }
+
   window.StacklySession = {
     formatNameFromEmail: formatNameFromEmail,
     getAvatarInitials: getAvatarInitials,
-    resolveIdentity: resolveIdentity
+    resolveIdentity: resolveIdentity,
+    bindTabLinks: bindTabLinks
   };
 })();
 
