@@ -39,16 +39,21 @@
 
     if (reducedMotion || typeof gsap === "undefined") return;
 
-    var animCards = panel.querySelectorAll(".dash-subsec, .kpi-card, .dash-mini-card");
-    if (animCards.length) {
-      gsap.killTweensOf(animCards);
+    var sections = panel.querySelectorAll(
+      ":scope > article, :scope > .dash-grid-2, :scope > .dash-grid-equal, :scope > .kpi-grid, :scope > .dash-subsec"
+    );
+    if (sections.length) {
+      sections.forEach(function (sec) {
+        sec.dataset.gsaped = "1";
+      });
+      gsap.killTweensOf(sections);
       gsap.fromTo(
-        animCards,
-        { opacity: 0.15, y: 16 },
+        sections,
+        { opacity: 0.25, y: 14 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.44,
+          duration: 0.34,
           stagger: 0.045,
           ease: "power2.out",
           clearProps: "transform,opacity"
@@ -61,12 +66,12 @@
       gsap.killTweensOf(timelines);
       gsap.fromTo(
         timelines,
-        { opacity: 0.15, x: -12 },
+        { opacity: 0.25, x: -10 },
         {
           opacity: 1,
           x: 0,
-          duration: 0.38,
-          stagger: 0.055,
+          duration: 0.32,
+          stagger: 0.04,
           ease: "power2.out",
           clearProps: "transform,opacity"
         }
@@ -82,8 +87,8 @@
         {
           scaleX: 1,
           transformOrigin: "left center",
-          duration: 0.72,
-          stagger: 0.04,
+          duration: 0.55,
+          stagger: 0.025,
           ease: "power3.out",
           clearProps: "transform"
         }
