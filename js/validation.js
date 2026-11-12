@@ -30,6 +30,11 @@
     return matches ? matches.length : 0;
   }
 
+  function countAlnum(str) {
+    var matches = str.match(/[A-Za-z0-9\u00C0-\u00FF]/g);
+    return matches ? matches.length : 0;
+  }
+
   function validateEmailValue(val) {
     if (!val || val.length > 254 || /\s/.test(val)) return false;
     var atIdx = val.indexOf("@");
@@ -57,7 +62,7 @@
   }
 
   function getFieldValidationError(input) {
-    if (!input) return "";
+    if (!input || input.disabled || input.readOnly) return "";
     var raw = input.value || "";
     var val = raw.trim();
     var required = input.hasAttribute("required");
@@ -66,6 +71,25 @@
     var mode = (input.getAttribute("data-validate") || "").toLowerCase();
     var minLen = parseInt(input.getAttribute("data-minlength") || "0", 10);
     var maxLen = parseInt(input.getAttribute("maxlength") || "0", 10);
+
+    if (type === "checkbox") return "";
+
+    if (type === "file") {
+      var hasFile = input.files && input.files.length > 0;
+      if (required && !hasFile && !val) {
+        return input.dataset.requiredMsg || "Please select a document file to upload.";
+      }
+      if (hasFile) {
+        var file = input.files[0];
+        if (!/\.(pdf|doc|docx|xls|xlsx|csv|png|jpg|jpeg|webp)$/i.test(file.name)) {
+          return "Accepted formats: PDF, Word, Excel, CSV, or image files.";
+        }
+        if (file.size > 10 * 1024 * 1024) {
+          return "Uploaded file must not exceed 10 MB.";
+        }
+      }
+      return "";
+    }
 
     if (required && !val) {
       return input.dataset.requiredMsg || (tag === "select" ? "Please select an option." : "This field is required.");
@@ -112,6 +136,8 @@
       }
     } else if (mode === "text" && countAlpha(val) < 2) {
       return "Please enter descriptive text containing at least 2 letters.";
+    } else if (mode === "query" && countAlnum(val) < 2) {
+      return "Please enter at least 2 letters or digits to search.";
     } else if (mode === "message" && countAlpha(val) < 5) {
       return "Please provide a meaningful brief with at least 5 alphabetic characters.";
     }
@@ -130,6 +156,18 @@
     return !err;
   }
 
+  function validateCheckboxGroup(form) {
+    if (!form || !form.hasAttribute("data-require-checked")) return true;
+    var needed = parseInt(form.getAttribute("data-require-checked") || "1", 10) || 1;
+    var checkedCount = form.querySelectorAll('input[type="checkbox"]:checked').length;
+    var errEl = form.querySelector(".dash-check-error");
+    var ok = checkedCount >= needed;
+    if (errEl) {
+      errEl.textContent = ok ? "" : (form.dataset.checkMsg || "Please select at least one briefing module.");
+    }
+    return ok;
+  }
+
   function validateForm(form) {
     if (!form) return false;
     var fields = form.querySelectorAll("input, select, textarea");
@@ -137,12 +175,14 @@
     fields.forEach(function (f) {
       if (!validateField(f)) valid = false;
     });
+    if (!validateCheckboxGroup(form)) valid = false;
     return valid;
   }
 
   window.StacklyValidation = {
     validateField: validateField,
     validateForm: validateForm,
+    validateCheckboxGroup: validateCheckboxGroup,
     setFieldError: setFieldError,
     getFieldValidationError: getFieldValidationError,
     getLocalTodayIso: getLocalTodayIso

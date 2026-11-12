@@ -155,9 +155,21 @@
         if (modalPrimaryLabel) modalPrimaryLabel.textContent = cfg.primary;
         if (modalSecondaryLabel) modalSecondaryLabel.textContent = cfg.secondary;
         if (modalCategorySelect) {
-          modalCategorySelect.innerHTML = cfg.cats
-            .map(function (c) { return '<option value="' + c + '">' + c + "</option>"; })
-            .join("");
+          modalCategorySelect.innerHTML =
+            '<option value="">Select Practice Category</option>' +
+            cfg.cats
+              .map(function (c) { return '<option value="' + c + '">' + c + "</option>"; })
+              .join("");
+        }
+        if (modalForm) {
+          modalForm.reset();
+          modalForm.querySelectorAll(".is-invalid").forEach(function (el) {
+            el.classList.remove("is-invalid");
+            el.removeAttribute("aria-invalid");
+          });
+          modalForm.querySelectorAll(".form-error").forEach(function (el) { el.textContent = ""; });
+          var mf = modalForm.querySelector(".form-feedback");
+          if (mf) { mf.className = "form-feedback"; mf.textContent = ""; }
         }
         if (modalBackdrop) modalBackdrop.classList.add("is-open");
       });
@@ -167,85 +179,6 @@
       btn.addEventListener("click", function () {
         if (modalBackdrop) modalBackdrop.classList.remove("is-open");
       });
-    });
-
-    function incrementKpi(id) {
-      var el = document.getElementById(id);
-      if (!el) return;
-      var cur = parseInt(el.textContent.replace(/[^0-9]/g, ""), 10) || 0;
-      el.textContent = (cur + 1).toLocaleString("en-US");
-    }
-
-    function prependNotification(title, meta) {
-      var list = document.getElementById("adminNotifList");
-      var badge = document.getElementById("adminNotifBadge");
-      if (list) {
-        var li = document.createElement("div");
-        li.className = "dash-popover-item";
-        li.innerHTML = "<strong>" + title + "</strong><span>" + meta + "</span>";
-        list.prepend(li);
-      }
-      if (badge) {
-        badge.textContent = String((parseInt(badge.textContent, 10) || 0) + 1);
-      }
-    }
-
-    if (modalForm) {
-      modalForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        var pVal = modalPrimaryInput ? modalPrimaryInput.value.trim() : "";
-        var sVal = modalSecondaryInput ? modalSecondaryInput.value.trim() : "";
-        var cVal = modalCategorySelect ? modalCategorySelect.value : "";
-        if (!pVal || !sVal) return;
-
-        if (currentActionType === "client") {
-          var clientTbody = document.getElementById("adminClientsTbody");
-          if (clientTbody) {
-            var tr = document.createElement("tr");
-            tr.innerHTML = "<td><strong>" + pVal + "</strong></td><td>" + sVal + "</td><td>" + cVal + '</td><td><span class="status-badge status-badge--gold">Active Demo</span></td>';
-            clientTbody.prepend(tr);
-          }
-          incrementKpi("kpiClients");
-          prependNotification("Client Added: " + pVal, "Assigned to " + cVal + " (Demo)");
-        } else if (currentActionType === "engagement") {
-          var engTbody = document.getElementById("adminEngagementsTbody");
-          if (engTbody) {
-            var tr2 = document.createElement("tr");
-            tr2.innerHTML = "<td><strong>" + pVal + "</strong></td><td>" + sVal + "</td><td>" + cVal + '</td><td><span class="status-badge status-badge--gold">In Progress</span></td>';
-            engTbody.prepend(tr2);
-          }
-          incrementKpi("kpiEngagements");
-          prependNotification("Engagement Created: " + pVal, sVal + " — " + cVal);
-        } else {
-          var compTbody = document.getElementById("adminComplianceTbody");
-          if (compTbody) {
-            var tr3 = document.createElement("tr");
-            tr3.innerHTML = "<td><strong>" + pVal + "</strong></td><td>" + cVal + "</td><td>" + sVal + '</td><td><span class="status-badge status-badge--pending">Pending</span></td>';
-            compTbody.prepend(tr3);
-          }
-          incrementKpi("kpiPending");
-          prependNotification("Task Scheduled: " + pVal, "Due " + sVal);
-        }
-
-        modalForm.reset();
-        if (modalBackdrop) modalBackdrop.classList.remove("is-open");
-      });
-    }
-
-    /* Interactive Approval Buttons in Tables */
-    document.addEventListener("click", function (e) {
-      var approveBtn = e.target.closest("[data-approve-doc]");
-      if (approveBtn) {
-        var row = approveBtn.closest("tr");
-        var badge = row ? row.querySelector(".status-badge") : null;
-        if (badge) {
-          badge.className = "status-badge status-badge--done";
-          badge.textContent = "Approved";
-        }
-        approveBtn.textContent = "Verified";
-        approveBtn.disabled = true;
-        incrementKpi("kpiCompleted");
-      }
     });
 
     /* Chart.js Visualisations (non-blocking if CDN loads after DOMContentLoaded) */

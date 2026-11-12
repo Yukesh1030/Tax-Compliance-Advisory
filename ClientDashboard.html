@@ -76,10 +76,13 @@
           <button type="button" class="dash-menu-toggle" id="dashMenuToggle" aria-label="Open menu">
             <i class="fa-solid fa-bars"></i>
           </button>
-          <div class="dash-search">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="search" id="clientSearchInput" placeholder="Search filings, documents, reports..." aria-label="Search client records" />
-          </div>
+          <form class="dash-search" id="clientSearchForm" data-dash-404-form novalidate>
+            <button type="submit" class="dash-search-btn" aria-label="Search client records">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </button>
+            <input type="search" id="clientSearchInput" required data-validate="query" data-required-msg="Enter at least 2 characters to search." placeholder="Search filings, documents, reports..." aria-label="Search client records" />
+            <span class="form-error" aria-live="polite"></span>
+          </form>
         </div>
 
         <div class="dash-top-actions">
@@ -126,7 +129,7 @@
               <strong>Role: Client</strong>
               <span id="clientProfileEmail">client@stacklytax.com</span>
             </div>
-            <a href="index.html" class="btn btn-outline-navy" style="width: 100%; min-height: 38px; padding: 0.4rem; margin-bottom: 0.5rem;">Public Website</a>
+            <a href="404.html" class="btn btn-outline-navy" style="width: 100%; min-height: 38px; padding: 0.4rem; margin-bottom: 0.5rem;">Public Website</a>
             <button type="button" class="btn btn-gold" style="width: 100%; min-height: 38px; padding: 0.4rem;" data-logout-btn>Logout</button>
           </div>
         </div>
@@ -319,22 +322,22 @@
                 <article class="dash-mini-card dash-mini-card--gold">
                   <div class="dash-mini-top"><h4 class="dash-mini-title">Rajesh Nair</h4><span class="status-badge status-badge--done">Direct Tax</span></div>
                   <p class="dash-mini-meta">Managing Partner &bull; Bengaluru Hub &bull; Corporate tax strategy &amp; assessments.</p>
-                  <div class="dash-mini-foot"><button type="button" class="btn btn-outline-navy dash-btn-sm" data-row-action data-next-status="Pinged" data-next-style="gold" data-done-label="Note Sent">Message Lead</button></div>
+                  <div class="dash-mini-foot"><a href="404.html" class="btn btn-outline-navy dash-btn-sm">Message Lead</a></div>
                 </article>
                 <article class="dash-mini-card">
                   <div class="dash-mini-top"><h4 class="dash-mini-title">Meera Krishnan</h4><span class="status-badge status-badge--gold">GST Lead</span></div>
                   <p class="dash-mini-meta">Senior Partner &bull; Chennai Hub &bull; Multi-state GST &amp; ITC defence.</p>
-                  <div class="dash-mini-foot"><button type="button" class="btn btn-outline-navy dash-btn-sm" data-row-action data-next-status="Pinged" data-next-style="gold" data-done-label="Note Sent">Message Lead</button></div>
+                  <div class="dash-mini-foot"><a href="404.html" class="btn btn-outline-navy dash-btn-sm">Message Lead</a></div>
                 </article>
                 <article class="dash-mini-card dash-mini-card--gold">
                   <div class="dash-mini-top"><h4 class="dash-mini-title">Ananya Deshmukh</h4><span class="status-badge status-badge--done">ROC &amp; MCA</span></div>
                   <p class="dash-mini-meta">Governance Lead &bull; Hyderabad Hub &bull; Board resolutions &amp; secretarial filings.</p>
-                  <div class="dash-mini-foot"><button type="button" class="btn btn-outline-navy dash-btn-sm" data-row-action data-next-status="Pinged" data-next-style="gold" data-done-label="Note Sent">Message Lead</button></div>
+                  <div class="dash-mini-foot"><a href="404.html" class="btn btn-outline-navy dash-btn-sm">Message Lead</a></div>
                 </article>
                 <article class="dash-mini-card">
                   <div class="dash-mini-top"><h4 class="dash-mini-title">Kavya Subramanian</h4><span class="status-badge status-badge--done">Assurance</span></div>
                   <p class="dash-mini-meta">Principal Advisor &bull; Coimbatore Hub &bull; Pre-audit readiness &amp; cash planning.</p>
-                  <div class="dash-mini-foot"><button type="button" class="btn btn-outline-navy dash-btn-sm" data-row-action data-next-status="Pinged" data-next-style="gold" data-done-label="Note Sent">Message Lead</button></div>
+                  <div class="dash-mini-foot"><a href="404.html" class="btn btn-outline-navy dash-btn-sm">Message Lead</a></div>
                 </article>
               </div>
             </article>
@@ -371,27 +374,31 @@
                   <h3>Request Add-On Engagement or Special Review (Demo)</h3>
                 </div>
               </div>
-              <form data-demo-builder data-feedback-target="clientAddonFeedback" data-feedback-message="Scope proposal request logged for your Engagement Partner (Demo Reference #SCP-209).">
+              <form id="clientAddonForm" data-dash-404-form novalidate>
                 <div class="dash-grid-equal" style="margin-bottom: 1rem;">
                   <div class="form-group" style="margin-bottom: 0;">
                     <label class="form-label" for="clientAddonSelect">Advisory Module</label>
-                    <select class="form-control" id="clientAddonSelect">
-                      <option>Transfer Pricing Benchmarking Study (FY 2025–26)</option>
-                      <option>R&amp;D Capital Expenditure Incentive Modeling</option>
-                      <option>Supplier GST Health Diagnostic &amp; Vendor Scrub</option>
+                    <select class="form-control" id="clientAddonSelect" required data-required-msg="Please select an advisory module.">
+                      <option value="">Select Advisory Module</option>
+                      <option value="Transfer Pricing Benchmarking Study (FY 2025-26)">Transfer Pricing Benchmarking Study (FY 2025&#8211;26)</option>
+                      <option value="R&D Capital Expenditure Incentive Modeling">R&amp;D Capital Expenditure Incentive Modeling</option>
+                      <option value="Supplier GST Health Diagnostic & Vendor Scrub">Supplier GST Health Diagnostic &amp; Vendor Scrub</option>
                     </select>
+                    <span class="form-error"></span>
                   </div>
                   <div class="form-group" style="margin-bottom: 0;">
                     <label class="form-label" for="clientAddonTimeline">Desired Start Window</label>
-                    <select class="form-control" id="clientAddonTimeline">
-                      <option>Immediate (Next 7 Days)</option>
-                      <option>Next Quarter Planning Cycle</option>
-                      <option>Prior to Annual Statutory Audit</option>
+                    <select class="form-control" id="clientAddonTimeline" required data-required-msg="Please select a desired start window.">
+                      <option value="">Select Start Window</option>
+                      <option value="Immediate (Next 7 Days)">Immediate (Next 7 Days)</option>
+                      <option value="Next Quarter Planning Cycle">Next Quarter Planning Cycle</option>
+                      <option value="Prior to Annual Statutory Audit">Prior to Annual Statutory Audit</option>
                     </select>
+                    <span class="form-error"></span>
                   </div>
                 </div>
                 <button type="submit" class="btn btn-navy">Request Scope Proposal (Demo)</button>
-                <div class="dash-inline-feedback" id="clientAddonFeedback" aria-live="polite"></div>
+                <div class="form-feedback" id="clientAddonFeedback" aria-live="polite"></div>
               </form>
             </article>
           </div>
@@ -406,9 +413,9 @@
                 <table class="dash-table">
                   <thead><tr><th>Document Name</th><th>Category</th><th>Updated</th><th>Status</th><th>Action</th></tr></thead>
                   <tbody id="clientDocsTbody">
-                    <tr><td><strong>GSTR-2B Reconciliation April</strong></td><td>GST Records</td><td>May 2026</td><td><span class="status-badge status-badge--done">Verified (Demo)</span></td><td><button type="button" class="btn btn-outline-navy" style="min-height:32px;padding:0.25rem 0.7rem;font-size:0.78rem;" data-download-demo>Download</button></td></tr>
-                    <tr><td><strong>TDS Challan ITNS-281 Pack</strong></td><td>Direct Tax</td><td>May 2026</td><td><span class="status-badge status-badge--done">Verified (Demo)</span></td><td><button type="button" class="btn btn-outline-navy" style="min-height:32px;padding:0.25rem 0.7rem;font-size:0.78rem;" data-download-demo>Download</button></td></tr>
-                    <tr><td><strong>Board Resolution Register</strong></td><td>Regulatory</td><td>April 2026</td><td><span class="status-badge status-badge--pending">Upload Due</span></td><td><button type="button" class="btn btn-outline-navy" style="min-height:32px;padding:0.25rem 0.7rem;font-size:0.78rem;" data-download-demo>Template</button></td></tr>
+                    <tr><td><strong>GSTR-2B Reconciliation April</strong></td><td>GST Records</td><td>May 2026</td><td><span class="status-badge status-badge--done">Verified (Demo)</span></td><td><a href="404.html" class="btn btn-outline-navy" style="min-height:32px;padding:0.25rem 0.7rem;font-size:0.78rem;">Download</a></td></tr>
+                    <tr><td><strong>TDS Challan ITNS-281 Pack</strong></td><td>Direct Tax</td><td>May 2026</td><td><span class="status-badge status-badge--done">Verified (Demo)</span></td><td><a href="404.html" class="btn btn-outline-navy" style="min-height:32px;padding:0.25rem 0.7rem;font-size:0.78rem;">Download</a></td></tr>
+                    <tr><td><strong>Board Resolution Register</strong></td><td>Regulatory</td><td>April 2026</td><td><span class="status-badge status-badge--pending">Upload Due</span></td><td><a href="404.html" class="btn btn-outline-navy" style="min-height:32px;padding:0.25rem 0.7rem;font-size:0.78rem;">Template</a></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -416,23 +423,27 @@
 
             <article class="dash-panel">
               <div class="dash-panel-head"><h3>Upload Compliance Document (Demo)</h3></div>
-              <form id="clientUploadForm">
+              <form id="clientUploadForm" data-dash-404-form novalidate>
                 <div class="form-group">
                   <label class="form-label" for="uploadDocTitle">Document Title</label>
-                  <input class="form-control" type="text" id="uploadDocTitle" required placeholder="e.g., May Bank Statement &amp; Purchase Register" />
+                  <input class="form-control" type="text" id="uploadDocTitle" required data-validate="text" data-minlength="3" data-required-msg="Please enter a descriptive document title." placeholder="e.g., May Bank Statement &amp; Purchase Register" />
+                  <span class="form-error"></span>
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="uploadDocCategory">Category</label>
-                  <select class="form-control" id="uploadDocCategory">
-                    <option>GST Records</option>
-                    <option>Direct Tax</option>
-                    <option>ROC &amp; Regulatory</option>
-                    <option>Audit Working Papers</option>
+                  <select class="form-control" id="uploadDocCategory" required data-required-msg="Please select a document category.">
+                    <option value="">Select Category</option>
+                    <option value="GST Records">GST Records</option>
+                    <option value="Direct Tax">Direct Tax</option>
+                    <option value="ROC & Regulatory">ROC &amp; Regulatory</option>
+                    <option value="Audit Working Papers">Audit Working Papers</option>
                   </select>
+                  <span class="form-error"></span>
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="uploadDocFile">Select File (Simulated)</label>
-                  <input class="form-control" type="file" id="uploadDocFile" style="padding: 0.5rem;" />
+                  <input class="form-control" type="file" id="uploadDocFile" required accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.png,.jpg,.jpeg,.webp" data-required-msg="Please attach a valid PDF, spreadsheet, document, or image file." style="padding: 0.5rem;" />
+                  <span class="form-error"></span>
                 </div>
                 <button type="submit" class="btn btn-navy" style="width: 100%;">Upload to Demo Vault</button>
                 <div class="form-feedback" id="uploadFeedback" aria-live="polite"></div>
@@ -491,9 +502,9 @@
                 <table class="dash-table">
                   <thead><tr><th>Action Item</th><th>Target Cut-Off</th><th>Status</th><th>Sign-Off</th></tr></thead>
                   <tbody>
-                    <tr><td><strong>Confirm May Purchase Register Lock</strong></td><td>15 May 2026</td><td><span class="status-badge status-badge--pending">Pending Client</span></td><td><button type="button" class="btn btn-navy dash-btn-sm" data-row-action data-next-status="Confirmed" data-next-style="done" data-done-label="Confirmed">Mark Confirmed</button></td></tr>
-                    <tr><td><strong>Approve TDS Form 26Q Challan Breakup</strong></td><td>24 May 2026</td><td><span class="status-badge status-badge--gold">Awaiting Sign-Off</span></td><td><button type="button" class="btn btn-navy dash-btn-sm" data-row-action data-next-status="Approved" data-next-style="done" data-done-label="Approved">Approve Breakup</button></td></tr>
-                    <tr><td><strong>Verify Form MGT-7A Shareholder Schedule</strong></td><td>02 Jun 2026</td><td><span class="status-badge status-badge--gold">Draft Shared</span></td><td><button type="button" class="btn btn-outline-navy dash-btn-sm" data-row-action data-next-status="Signed Off" data-next-style="done" data-done-label="Signed">Confirm Draft</button></td></tr>
+                    <tr><td><strong>Confirm May Purchase Register Lock</strong></td><td>15 May 2026</td><td><span class="status-badge status-badge--pending">Pending Client</span></td><td><a href="404.html" class="btn btn-navy dash-btn-sm">Mark Confirmed</a></td></tr>
+                    <tr><td><strong>Approve TDS Form 26Q Challan Breakup</strong></td><td>24 May 2026</td><td><span class="status-badge status-badge--gold">Awaiting Sign-Off</span></td><td><a href="404.html" class="btn btn-navy dash-btn-sm">Approve Breakup</a></td></tr>
+                    <tr><td><strong>Verify Form MGT-7A Shareholder Schedule</strong></td><td>02 Jun 2026</td><td><span class="status-badge status-badge--gold">Draft Shared</span></td><td><a href="404.html" class="btn btn-outline-navy dash-btn-sm">Confirm Draft</a></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -566,15 +577,15 @@
               <div class="dash-kv-grid">
                 <div class="dash-kv-item">
                   <span class="dash-kv-label">FY 2024–25 ITR-6 Corporate Return</span>
-                  <div class="dash-kv-val"><span>Ack #918420411</span><button type="button" class="dash-copy-btn" data-download-demo>Receipt</button></div>
+                  <div class="dash-kv-val"><span>Ack #918420411</span><a href="404.html" class="dash-copy-btn">Receipt</a></div>
                 </div>
                 <div class="dash-kv-item">
                   <span class="dash-kv-label">FY 2024–25 Tax Audit Form 3CD</span>
-                  <div class="dash-kv-val"><span>UDIN Verified</span><button type="button" class="dash-copy-btn" data-download-demo>Receipt</button></div>
+                  <div class="dash-kv-val"><span>UDIN Verified</span><a href="404.html" class="dash-copy-btn">Receipt</a></div>
                 </div>
                 <div class="dash-kv-item">
                   <span class="dash-kv-label">FY 2024–25 GSTR-9 / 9C Annual</span>
-                  <div class="dash-kv-val"><span>All 3 States Filed</span><button type="button" class="dash-copy-btn" data-download-demo>Receipt</button></div>
+                  <div class="dash-kv-val"><span>All 3 States Filed</span><a href="404.html" class="dash-copy-btn">Receipt</a></div>
                 </div>
               </div>
             </article>
@@ -589,9 +600,9 @@
               <table class="dash-table">
                 <thead><tr><th>Report Title</th><th>Period</th><th>Prepared By</th><th>Download</th></tr></thead>
                 <tbody>
-                  <tr><td><strong>Quarterly Effective Tax Rate Analysis</strong></td><td>Q4 FY25–26</td><td>Rajesh Nair</td><td><button type="button" class="btn btn-gold" style="min-height:32px;padding:0.25rem 0.75rem;font-size:0.78rem;" data-download-demo>Download PDF (Demo)</button></td></tr>
-                  <tr><td><strong>Multi-State GST ITC Health Statement</strong></td><td>FY 2025–26</td><td>Meera Krishnan</td><td><button type="button" class="btn btn-gold" style="min-height:32px;padding:0.25rem 0.75rem;font-size:0.78rem;" data-download-demo>Download PDF (Demo)</button></td></tr>
-                  <tr><td><strong>Annual Statutory Governance Scorecard</strong></td><td>FY 2025–26</td><td>Ananya Deshmukh</td><td><button type="button" class="btn btn-gold" style="min-height:32px;padding:0.25rem 0.75rem;font-size:0.78rem;" data-download-demo>Download PDF (Demo)</button></td></tr>
+                  <tr><td><strong>Quarterly Effective Tax Rate Analysis</strong></td><td>Q4 FY25–26</td><td>Rajesh Nair</td><td><a href="404.html" class="btn btn-gold" style="min-height:32px;padding:0.25rem 0.75rem;font-size:0.78rem;">Download PDF (Demo)</a></td></tr>
+                  <tr><td><strong>Multi-State GST ITC Health Statement</strong></td><td>FY 2025–26</td><td>Meera Krishnan</td><td><a href="404.html" class="btn btn-gold" style="min-height:32px;padding:0.25rem 0.75rem;font-size:0.78rem;">Download PDF (Demo)</a></td></tr>
+                  <tr><td><strong>Annual Statutory Governance Scorecard</strong></td><td>FY 2025–26</td><td>Ananya Deshmukh</td><td><a href="404.html" class="btn btn-gold" style="min-height:32px;padding:0.25rem 0.75rem;font-size:0.78rem;">Download PDF (Demo)</a></td></tr>
                 </tbody>
               </table>
             </div>
@@ -675,17 +686,17 @@
                 <article class="dash-mini-card dash-mini-card--gold">
                   <div class="dash-mini-top"><h4 class="dash-mini-title">GST IMS Invoice Advisory</h4><span class="status-badge status-badge--pending">High Impact</span></div>
                   <p class="dash-mini-meta">Recommended monthly supplier acceptance workflow before GSTR-2B lock on the 14th.</p>
-                  <div class="dash-mini-foot"><button type="button" class="btn btn-outline-navy dash-btn-sm" data-row-action data-next-status="Acknowledged" data-next-style="done" data-done-label="Reviewed">Mark Reviewed</button></div>
+                  <div class="dash-mini-foot"><a href="404.html" class="btn btn-outline-navy dash-btn-sm">Mark Reviewed</a></div>
                 </article>
                 <article class="dash-mini-card">
                   <div class="dash-mini-top"><h4 class="dash-mini-title">Sec 43B(h) Vendor Cut-Off</h4><span class="status-badge status-badge--gold">Medium Impact</span></div>
                   <p class="dash-mini-meta">Audit of Micro &amp; Small Enterprise ageing bills for year-end tax disallowance protection.</p>
-                  <div class="dash-mini-foot"><button type="button" class="btn btn-outline-navy dash-btn-sm" data-row-action data-next-status="Acknowledged" data-next-style="done" data-done-label="Reviewed">Mark Reviewed</button></div>
+                  <div class="dash-mini-foot"><a href="404.html" class="btn btn-outline-navy dash-btn-sm">Mark Reviewed</a></div>
                 </article>
                 <article class="dash-mini-card dash-mini-card--gold">
                   <div class="dash-mini-top"><h4 class="dash-mini-title">Transfer Pricing Safe Harbour</h4><span class="status-badge status-badge--done">Advisory Note</span></div>
                   <p class="dash-mini-meta">Updated benchmark thresholds evaluated for R&amp;D subsidiary transactions.</p>
-                  <div class="dash-mini-foot"><button type="button" class="btn btn-outline-navy dash-btn-sm" data-row-action data-next-status="Acknowledged" data-next-style="done" data-done-label="Reviewed">Mark Reviewed</button></div>
+                  <div class="dash-mini-foot"><a href="404.html" class="btn btn-outline-navy dash-btn-sm">Mark Reviewed</a></div>
                 </article>
               </div>
             </article>
@@ -722,15 +733,16 @@
                   <h3>Build Custom CFO &amp; Board Advisory Pack (Demo)</h3>
                 </div>
               </div>
-              <form data-demo-builder data-feedback-target="clientBoardPackFeedback" data-feedback-message="Custom Board Briefing Pack compiled for executive download (Demo Summary Ready).">
-                <div class="dash-check-grid" style="margin-bottom: 1rem;">
-                  <label class="dash-check-option"><input type="checkbox" checked /><span>Quarterly Effective Tax Rate &amp; Depreciation Schedule</span></label>
-                  <label class="dash-check-option"><input type="checkbox" checked /><span>Multi-State GST Input Tax Credit &amp; Vendor Risk Brief</span></label>
-                  <label class="dash-check-option"><input type="checkbox" /><span>Upcoming Advance Tax Cashflow Projection</span></label>
-                  <label class="dash-check-option"><input type="checkbox" /><span>ROC Secretarial &amp; Director Compliance Summary</span></label>
+              <form id="clientBoardPackForm" data-dash-404-form data-require-checked="1" data-check-msg="Please select at least one briefing module before compiling." novalidate>
+                <div class="dash-check-grid" style="margin-bottom: 0.75rem;">
+                  <label class="dash-check-option"><input type="checkbox" name="boardPackModule" value="Effective Tax Rate" /><span>Quarterly Effective Tax Rate &amp; Depreciation Schedule</span></label>
+                  <label class="dash-check-option"><input type="checkbox" name="boardPackModule" value="GST ITC Brief" /><span>Multi-State GST Input Tax Credit &amp; Vendor Risk Brief</span></label>
+                  <label class="dash-check-option"><input type="checkbox" name="boardPackModule" value="Advance Tax Cashflow" /><span>Upcoming Advance Tax Cashflow Projection</span></label>
+                  <label class="dash-check-option"><input type="checkbox" name="boardPackModule" value="ROC Secretarial Summary" /><span>ROC Secretarial &amp; Director Compliance Summary</span></label>
                 </div>
+                <span class="form-error dash-check-error" aria-live="polite" style="display:block;margin-bottom:0.75rem;"></span>
                 <button type="submit" class="btn btn-gold">Compile Board Briefing Pack (Demo)</button>
-                <div class="dash-inline-feedback" id="clientBoardPackFeedback" aria-live="polite"></div>
+                <div class="form-feedback" id="clientBoardPackFeedback" aria-live="polite"></div>
               </form>
             </article>
           </div>
@@ -757,23 +769,26 @@
 
             <article class="dash-panel">
               <div class="dash-panel-head"><h2>Request Consultation or Support (Demo)</h2></div>
-              <form id="clientConsultForm" style="margin-bottom: 1.5rem;">
+              <form id="clientConsultForm" data-dash-404-form novalidate style="margin-bottom: 1.5rem;">
                 <div class="form-group">
                   <label class="form-label" for="clientConsultTopic">Consultation Topic</label>
-                  <select class="form-control" id="clientConsultTopic">
-                    <option>Q1 Advance Tax &amp; Capex Review</option>
-                    <option>GST Input Tax Credit Clarification</option>
-                    <option>Board Secretarial Resolution Support</option>
+                  <select class="form-control" id="clientConsultTopic" required data-required-msg="Please select a consultation topic.">
+                    <option value="">Select Consultation Topic</option>
+                    <option value="Q1 Advance Tax & Capex Review">Q1 Advance Tax &amp; Capex Review</option>
+                    <option value="GST Input Tax Credit Clarification">GST Input Tax Credit Clarification</option>
+                    <option value="Board Secretarial Resolution Support">Board Secretarial Resolution Support</option>
                   </select>
+                  <span class="form-error"></span>
                 </div>
                 <button type="submit" class="btn btn-navy" style="width: 100%;">Request Advisor Call</button>
                 <div class="form-feedback" id="clientConsultFeedback" aria-live="polite"></div>
               </form>
 
-              <form id="clientSupportForm">
+              <form id="clientSupportForm" data-dash-404-form novalidate>
                 <div class="form-group">
                   <label class="form-label" for="clientSupportSubject">Support Ticket Subject</label>
-                  <input class="form-control" type="text" id="clientSupportSubject" required placeholder="e.g., Portal access for finance controller" />
+                  <input class="form-control" type="text" id="clientSupportSubject" required data-validate="text" data-minlength="4" data-required-msg="Please enter a support ticket subject (min 4 characters)." placeholder="e.g., Portal access for finance controller" />
+                  <span class="form-error"></span>
                 </div>
                 <button type="submit" class="btn btn-outline-navy" style="width: 100%;">Submit Support Ticket (Demo)</button>
                 <div class="form-feedback" id="clientSupportFeedback" aria-live="polite"></div>
@@ -907,6 +922,7 @@
 
   <script src="js/counters.js"></script>
   <script src="js/session.js"></script>
+  <script src="js/validation.js"></script>
   <script src="js/dashboard-enhancements.js"></script>
   <script src="js/client-dashboard.js"></script>
   <script async id="chartjsScript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>

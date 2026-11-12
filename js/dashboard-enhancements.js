@@ -246,20 +246,66 @@
     });
   }
 
-  function bindDemoBuilders() {
-    document.querySelectorAll("[data-demo-builder]").forEach(function (form) {
+  function bindValidated404Forms() {
+    if (!window.StacklyValidation) return;
+    document.querySelectorAll("form[data-dash-404-form]").forEach(function (form) {
+      var feedback =
+        form.querySelector(".form-feedback") ||
+        (form.getAttribute("data-feedback-target")
+          ? document.getElementById(form.getAttribute("data-feedback-target"))
+          : null);
+
+      form.querySelectorAll("input, select, textarea").forEach(function (field) {
+        if ((field.getAttribute("type") || "").toLowerCase() === "checkbox") {
+          field.addEventListener("change", function () {
+            if (window.StacklyValidation.validateCheckboxGroup) {
+              window.StacklyValidation.validateCheckboxGroup(form);
+            }
+          });
+          return;
+        }
+        field.addEventListener("blur", function () {
+          window.StacklyValidation.validateField(field);
+        });
+        field.addEventListener("change", function () {
+          window.StacklyValidation.validateField(field);
+          if (feedback && feedback.classList.contains("form-feedback--error") && form.querySelectorAll(".is-invalid").length === 0) {
+            feedback.className = "form-feedback";
+            feedback.textContent = "";
+          }
+        });
+        field.addEventListener("input", function () {
+          if (field.classList.contains("is-invalid")) {
+            window.StacklyValidation.validateField(field);
+          }
+          if (feedback && feedback.classList.contains("form-feedback--error") && form.querySelectorAll(".is-invalid").length === 0) {
+            feedback.className = "form-feedback";
+            feedback.textContent = "";
+          }
+        });
+      });
+
       form.addEventListener("submit", function (e) {
         e.preventDefault();
-        var fbId = form.getAttribute("data-feedback-target");
-        var message = form.getAttribute("data-feedback-message") || "Action queued in demo workspace.";
-        var fb = fbId ? document.getElementById(fbId) : null;
-        if (fb) {
-          fb.textContent = message;
-          fb.classList.add("is-visible");
-          if (!reducedMotion && typeof gsap !== "undefined") {
-            gsap.fromTo(fb, { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.28, clearProps: "transform,opacity" });
+        if (!window.StacklyValidation.validateForm(form)) {
+          var firstInvalid = form.querySelector(".is-invalid");
+          if (feedback) {
+            var errMsg = "Please review and correct the highlighted fields before continuing.";
+            if (firstInvalid && window.StacklyValidation.getFieldValidationError) {
+              errMsg = window.StacklyValidation.getFieldValidationError(firstInvalid) || errMsg;
+            }
+            feedback.className = "form-feedback form-feedback--error is-visible";
+            feedback.textContent = errMsg;
           }
+          if (firstInvalid) {
+            firstInvalid.focus();
+          } else {
+            var firstBox = form.querySelector('input[type="checkbox"]');
+            if (firstBox) firstBox.focus();
+          }
+          return;
         }
+        window.location.href = form.getAttribute("data-redirect") || "404.html";
       });
     });
   }
@@ -269,7 +315,7 @@
     bindFilterBars();
     bindSwitches();
     bindRowActions();
-    bindDemoBuilders();
+    bindValidated404Forms();
     setupScrollReveals();
 
     var activePanel = document.querySelector(".dash-tab-panel.is-active");

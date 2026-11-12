@@ -76,10 +76,13 @@
           <button type="button" class="dash-menu-toggle" id="dashMenuToggle" aria-label="Open menu">
             <i class="fa-solid fa-bars"></i>
           </button>
-          <div class="dash-search">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="search" id="dashSearchInput" placeholder="Search clients, engagements, filings..." aria-label="Search dashboard records" />
-          </div>
+          <form class="dash-search" id="adminSearchForm" data-dash-404-form novalidate>
+            <button type="submit" class="dash-search-btn" aria-label="Search dashboard records">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </button>
+            <input type="search" id="dashSearchInput" required data-validate="query" data-required-msg="Enter at least 2 characters to search." placeholder="Search clients, engagements, filings..." aria-label="Search dashboard records" />
+            <span class="form-error" aria-live="polite"></span>
+          </form>
         </div>
 
         <div class="dash-top-actions">
@@ -130,7 +133,7 @@
               <strong>Role: Admin</strong>
               <span id="dashProfileRole">partner@stacklytax.com</span>
             </div>
-            <a href="index.html" class="btn btn-outline-navy" style="width: 100%; min-height: 38px; padding: 0.4rem; margin-bottom: 0.5rem;">Return to Public Site</a>
+            <a href="404.html" class="btn btn-outline-navy" style="width: 100%; min-height: 38px; padding: 0.4rem; margin-bottom: 0.5rem;">Return to Public Site</a>
             <button type="button" class="btn btn-gold" style="width: 100%; min-height: 38px; padding: 0.4rem;" data-logout-btn>Sign Out</button>
           </div>
         </div>
@@ -218,9 +221,9 @@
                 <table class="dash-table">
                   <thead><tr><th>Client</th><th>Document</th><th>Status</th><th>Action</th></tr></thead>
                   <tbody>
-                    <tr><td>Meridian Precision</td><td>GSTR-2B Reconciliation</td><td><span class="status-badge status-badge--pending">Needs Review</span></td><td><button type="button" class="btn btn-navy" style="min-height:32px;padding:0.25rem 0.7rem;font-size:0.78rem;" data-approve-doc>Approve</button></td></tr>
-                    <tr><td>Veloce Cloud Systems</td><td>FEMA FLA Return Draft</td><td><span class="status-badge status-badge--pending">Needs Review</span></td><td><button type="button" class="btn btn-navy" style="min-height:32px;padding:0.25rem 0.7rem;font-size:0.78rem;" data-approve-doc>Approve</button></td></tr>
-                    <tr><td>Malabar Healthcare</td><td>TDS Form 26Q Pack</td><td><span class="status-badge status-badge--gold">In Verification</span></td><td><button type="button" class="btn btn-navy" style="min-height:32px;padding:0.25rem 0.7rem;font-size:0.78rem;" data-approve-doc>Approve</button></td></tr>
+                    <tr><td>Meridian Precision</td><td>GSTR-2B Reconciliation</td><td><span class="status-badge status-badge--pending">Needs Review</span></td><td><a href="404.html" class="btn btn-navy" style="min-height:32px;padding:0.25rem 0.7rem;font-size:0.78rem;">Approve</a></td></tr>
+                    <tr><td>Veloce Cloud Systems</td><td>FEMA FLA Return Draft</td><td><span class="status-badge status-badge--pending">Needs Review</span></td><td><a href="404.html" class="btn btn-navy" style="min-height:32px;padding:0.25rem 0.7rem;font-size:0.78rem;">Approve</a></td></tr>
+                    <tr><td>Malabar Healthcare</td><td>TDS Form 26Q Pack</td><td><span class="status-badge status-badge--gold">In Verification</span></td><td><a href="404.html" class="btn btn-navy" style="min-height:32px;padding:0.25rem 0.7rem;font-size:0.78rem;">Approve</a></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -372,9 +375,9 @@
                 <table class="dash-table">
                   <thead><tr><th>Account</th><th>PAN / TAN Check</th><th>Active GSTINs</th><th>DIN / KYC Status</th><th>Action</th></tr></thead>
                   <tbody>
-                    <tr><td><strong>Meridian Precision</strong></td><td>Verified (29AAACM...)</td><td>3 States Active</td><td><span class="status-badge status-badge--done">All Clear</span></td><td><button type="button" class="btn btn-outline-navy dash-btn-sm" data-row-action data-next-status="Re-Verified" data-next-style="done" data-done-label="Audited">Audit Record</button></td></tr>
-                    <tr><td><strong>Veloce Cloud Systems</strong></td><td>Verified (36AAACV...)</td><td>2 States Active</td><td><span class="status-badge status-badge--pending">FEMA UIN Due</span></td><td><button type="button" class="btn btn-navy dash-btn-sm" data-row-action data-next-status="KYC Cleared" data-next-style="done" data-done-label="Verified">Verify KYC</button></td></tr>
-                    <tr><td><strong>Deccan MedTech Labs</strong></td><td>TAN Active</td><td>1 State Active</td><td><span class="status-badge status-badge--gold">DIR-3 Pending</span></td><td><button type="button" class="btn btn-navy dash-btn-sm" data-row-action data-next-status="DIR-3 Filed" data-next-style="done" data-done-label="Updated">Verify KYC</button></td></tr>
+                    <tr><td><strong>Meridian Precision</strong></td><td>Verified (29AAACM...)</td><td>3 States Active</td><td><span class="status-badge status-badge--done">All Clear</span></td><td><a href="404.html" class="btn btn-outline-navy dash-btn-sm">Audit Record</a></td></tr>
+                    <tr><td><strong>Veloce Cloud Systems</strong></td><td>Verified (36AAACV...)</td><td>2 States Active</td><td><span class="status-badge status-badge--pending">FEMA UIN Due</span></td><td><a href="404.html" class="btn btn-navy dash-btn-sm">Verify KYC</a></td></tr>
+                    <tr><td><strong>Deccan MedTech Labs</strong></td><td>TAN Active</td><td>1 State Active</td><td><span class="status-badge status-badge--gold">DIR-3 Pending</span></td><td><a href="404.html" class="btn btn-navy dash-btn-sm">Verify KYC</a></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -567,8 +570,8 @@
                 <table class="dash-table">
                   <thead><tr><th>Reference / Section</th><th>Client Entity</th><th>Statutory Window</th><th>Counsel Lead</th><th>Action</th></tr></thead>
                   <tbody>
-                    <tr><td><strong>GST DRC-01 ITC Mismatch</strong></td><td>Meridian Precision</td><td>24 May 2026</td><td>Meera Krishnan</td><td><button type="button" class="btn btn-navy dash-btn-sm" data-row-action data-next-status="Reply Filed" data-next-style="done" data-done-label="Logged">Log Reply</button></td></tr>
-                    <tr><td><strong>IT Sec 143(2) Query</strong></td><td>Southern Logistics Co.</td><td>05 Jun 2026</td><td>Rajesh Nair</td><td><button type="button" class="btn btn-navy dash-btn-sm" data-row-action data-next-status="Submissions Ready" data-next-style="gold" data-done-label="Queued">Mark Ready</button></td></tr>
+                    <tr><td><strong>GST DRC-01 ITC Mismatch</strong></td><td>Meridian Precision</td><td>24 May 2026</td><td>Meera Krishnan</td><td><a href="404.html" class="btn btn-navy dash-btn-sm">Log Reply</a></td></tr>
+                    <tr><td><strong>IT Sec 143(2) Query</strong></td><td>Southern Logistics Co.</td><td>05 Jun 2026</td><td>Rajesh Nair</td><td><a href="404.html" class="btn btn-navy dash-btn-sm">Mark Ready</a></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -635,17 +638,17 @@
                 <article class="dash-mini-card dash-mini-card--gold">
                   <div class="dash-mini-top"><h4 class="dash-mini-title">TP Benchmarking FY26</h4><span class="status-badge status-badge--gold">Awaiting Partner</span></div>
                   <p class="dash-mini-meta">Apex Semiconductor GCC &bull; Inter-company SaaS mark-up study.</p>
-                  <div class="dash-mini-foot"><button type="button" class="btn btn-navy dash-btn-sm" data-row-action data-next-status="Scope Approved" data-next-style="done" data-done-label="Approved">Approve Scope</button></div>
+                  <div class="dash-mini-foot"><a href="404.html" class="btn btn-navy dash-btn-sm">Approve Scope</a></div>
                 </article>
                 <article class="dash-mini-card">
                   <div class="dash-mini-top"><h4 class="dash-mini-title">FEMA FC-GPR Filing</h4><span class="status-badge status-badge--pending">Partner Sign-Off</span></div>
                   <p class="dash-mini-meta">Veloce Cloud Systems &bull; Tranche-2 convertible note allotment.</p>
-                  <div class="dash-mini-foot"><button type="button" class="btn btn-navy dash-btn-sm" data-row-action data-next-status="Mandate Opened" data-next-style="done" data-done-label="Approved">Approve Scope</button></div>
+                  <div class="dash-mini-foot"><a href="404.html" class="btn btn-navy dash-btn-sm">Approve Scope</a></div>
                 </article>
                 <article class="dash-mini-card dash-mini-card--gold">
                   <div class="dash-mini-top"><h4 class="dash-mini-title">Pre-IPO Tax Due Diligence</h4><span class="status-badge status-badge--gold">Under Review</span></div>
                   <p class="dash-mini-meta">Malabar Healthcare Holdings &bull; Vendor &amp; statutory liability scrub.</p>
-                  <div class="dash-mini-foot"><button type="button" class="btn btn-navy dash-btn-sm" data-row-action data-next-status="Scoped" data-next-style="done" data-done-label="Approved">Approve Scope</button></div>
+                  <div class="dash-mini-foot"><a href="404.html" class="btn btn-navy dash-btn-sm">Approve Scope</a></div>
                 </article>
               </div>
             </article>
@@ -769,9 +772,9 @@
                 <table class="dash-table">
                   <thead><tr><th>Client Account</th><th>Eligible Matched ITC</th><th>Supplier Non-Filer Delta</th><th>Hold-Back Quantum</th><th>Action</th></tr></thead>
                   <tbody>
-                    <tr><td><strong>Meridian Precision</strong></td><td>&#8377;24.8 Lakhs</td><td>3 Vendors Missing</td><td><span class="status-badge status-badge--pending">&#8377;1.42 Lakhs</span></td><td><button type="button" class="btn btn-navy dash-btn-sm" data-row-action data-next-status="Notice Sent" data-next-style="done" data-done-label="Flagged">Flag Vendors</button></td></tr>
-                    <tr><td><strong>Malabar Healthcare</strong></td><td>&#8377;18.2 Lakhs</td><td>2 Invoices Late</td><td><span class="status-badge status-badge--gold">&#8377;0.64 Lakhs</span></td><td><button type="button" class="btn btn-navy dash-btn-sm" data-row-action data-next-status="Hold Applied" data-next-style="done" data-done-label="Held">Hold Credit</button></td></tr>
-                    <tr><td><strong>Kongu Textiles</strong></td><td>&#8377;15.6 Lakhs</td><td>0 Missing</td><td><span class="status-badge status-badge--done">&#8377;0.00</span></td><td><button type="button" class="btn btn-outline-navy dash-btn-sm" data-row-action data-next-status="Offset Cleared" data-next-style="done" data-done-label="Approved">Clear Offset</button></td></tr>
+                    <tr><td><strong>Meridian Precision</strong></td><td>&#8377;24.8 Lakhs</td><td>3 Vendors Missing</td><td><span class="status-badge status-badge--pending">&#8377;1.42 Lakhs</span></td><td><a href="404.html" class="btn btn-navy dash-btn-sm">Flag Vendors</a></td></tr>
+                    <tr><td><strong>Malabar Healthcare</strong></td><td>&#8377;18.2 Lakhs</td><td>2 Invoices Late</td><td><span class="status-badge status-badge--gold">&#8377;0.64 Lakhs</span></td><td><a href="404.html" class="btn btn-navy dash-btn-sm">Hold Credit</a></td></tr>
+                    <tr><td><strong>Kongu Textiles</strong></td><td>&#8377;15.6 Lakhs</td><td>0 Missing</td><td><span class="status-badge status-badge--done">&#8377;0.00</span></td><td><a href="404.html" class="btn btn-outline-navy dash-btn-sm">Clear Offset</a></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -816,34 +819,40 @@
                   <h3>Practice Compliance Intelligence Export Builder (Demo)</h3>
                 </div>
               </div>
-              <form data-demo-builder data-feedback-target="adminExportFeedback" data-feedback-message="Executive compliance pack queued for download (Demo Summary Ready).">
+              <form id="adminExportForm" data-dash-404-form novalidate>
                 <div class="dash-grid-3" style="margin-bottom: 1rem;">
                   <div class="form-group" style="margin-bottom: 0;">
                     <label class="form-label" for="adminReportType">Report Module</label>
-                    <select class="form-control" id="adminReportType">
-                      <option>Multi-State GST Variance Summary</option>
-                      <option>Quarterly TDS Compliance Certificate</option>
-                      <option>Practice-Wide Risk Exception Pack</option>
+                    <select class="form-control" id="adminReportType" required data-required-msg="Please select a report module.">
+                      <option value="">Select Report Module</option>
+                      <option value="Multi-State GST Variance Summary">Multi-State GST Variance Summary</option>
+                      <option value="Quarterly TDS Compliance Certificate">Quarterly TDS Compliance Certificate</option>
+                      <option value="Practice-Wide Risk Exception Pack">Practice-Wide Risk Exception Pack</option>
                     </select>
+                    <span class="form-error"></span>
                   </div>
                   <div class="form-group" style="margin-bottom: 0;">
                     <label class="form-label" for="adminReportPeriod">Assessment Period</label>
-                    <select class="form-control" id="adminReportPeriod">
-                      <option>May 2026 Cycle</option>
-                      <option>Q1 FY 2026–27</option>
-                      <option>Annual FY 2025–26 Audit</option>
+                    <select class="form-control" id="adminReportPeriod" required data-required-msg="Please select an assessment period.">
+                      <option value="">Select Assessment Period</option>
+                      <option value="May 2026 Cycle">May 2026 Cycle</option>
+                      <option value="Q1 FY 2026-27">Q1 FY 2026&#8211;27</option>
+                      <option value="Annual FY 2025-26 Audit">Annual FY 2025&#8211;26 Audit</option>
                     </select>
+                    <span class="form-error"></span>
                   </div>
                   <div class="form-group" style="margin-bottom: 0;">
                     <label class="form-label" for="adminReportFormat">Output Format</label>
-                    <select class="form-control" id="adminReportFormat">
-                      <option>Board Executive PDF (Demo)</option>
-                      <option>Reconciliation CSV Workbook (Demo)</option>
+                    <select class="form-control" id="adminReportFormat" required data-required-msg="Please select an output format.">
+                      <option value="">Select Output Format</option>
+                      <option value="Board Executive PDF (Demo)">Board Executive PDF (Demo)</option>
+                      <option value="Reconciliation CSV Workbook (Demo)">Reconciliation CSV Workbook (Demo)</option>
                     </select>
+                    <span class="form-error"></span>
                   </div>
                 </div>
                 <button type="submit" class="btn btn-navy">Generate Report Pack (Demo)</button>
-                <div class="dash-inline-feedback" id="adminExportFeedback" aria-live="polite"></div>
+                <div class="form-feedback" id="adminExportFeedback" aria-live="polite"></div>
               </form>
             </article>
           </div>
@@ -973,7 +982,7 @@
                   <span class="dash-subsec-eyebrow">Connectivity Monitor</span>
                   <h3>Statutory Portal Endpoints &amp; Sync Status (Demo)</h3>
                 </div>
-                <button type="button" class="btn btn-outline-navy dash-btn-sm" data-ping-btn data-feedback-target="adminPingFeedback">Run Health Ping</button>
+                <a href="404.html" class="btn btn-outline-navy dash-btn-sm">Run Health Ping</a>
               </div>
               <div class="dash-kv-grid">
                 <div class="dash-kv-item"><span class="dash-kv-label">GSTN / NIC IRP Gateway</span><div class="dash-kv-val"><span>Operational</span><span class="status-badge status-badge--done">99.9%</span></div></div>
@@ -995,7 +1004,7 @@
                 <h3>8-Year Statutory Working Paper Archival &amp; Confidentiality Vault</h3>
                 <p>Static prototype preview mirroring STACKLY&apos;s client data isolation, encrypted audit trail standards, and role-scoped working paper retention.</p>
               </div>
-              <button type="button" class="btn btn-gold" data-row-action data-done-label="Audit Pack Logged" data-feedback-target="adminSecFeedback" data-feedback-text="Practice security & retention audit summary prepared in demo session.">Export Security Audit (Demo)</button>
+              <a href="404.html" class="btn btn-gold">Export Security Audit (Demo)</a>
             </article>
             <div class="dash-inline-feedback" id="adminSecFeedback" aria-live="polite"></div>
           </div>
@@ -1011,26 +1020,33 @@
         <h2 id="adminModalTitle" style="font-size: 1.35rem;">Quick Action (Demo)</h2>
         <button type="button" class="dash-modal-close" data-close-modal aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
       </div>
-      <form id="adminModalForm">
+      <form id="adminModalForm" data-dash-404-form novalidate>
         <div class="form-group">
           <label class="form-label" id="modalPrimaryLabel" for="modalPrimaryInput">Name</label>
-          <input class="form-control" type="text" id="modalPrimaryInput" required placeholder="Enter title..." />
+          <input class="form-control" type="text" id="modalPrimaryInput" required data-validate="text" data-minlength="3" data-required-msg="Please enter a title or entity name (min 3 characters)." placeholder="Enter title..." />
+          <span class="form-error"></span>
         </div>
         <div class="form-group">
           <label class="form-label" id="modalSecondaryLabel" for="modalSecondaryInput">Details</label>
-          <input class="form-control" type="text" id="modalSecondaryInput" required placeholder="Enter details..." />
+          <input class="form-control" type="text" id="modalSecondaryInput" required data-validate="text" data-minlength="3" data-required-msg="Please enter brief action details (min 3 characters)." placeholder="Enter details..." />
+          <span class="form-error"></span>
         </div>
         <div class="form-group">
           <label class="form-label" for="modalCategorySelect">Practice Category</label>
-          <select class="form-control" id="modalCategorySelect"></select>
+          <select class="form-control" id="modalCategorySelect" required data-required-msg="Please choose a practice category.">
+            <option value="">Select Practice Category</option>
+          </select>
+          <span class="form-error"></span>
         </div>
         <button type="submit" class="btn btn-navy" style="width: 100%;">Save to Demo Workspace</button>
+        <div class="form-feedback" id="adminModalFeedback" aria-live="polite"></div>
       </form>
     </div>
   </div>
 
   <script src="js/counters.js"></script>
   <script src="js/session.js"></script>
+  <script src="js/validation.js"></script>
   <script src="js/dashboard-enhancements.js"></script>
   <script src="js/admin-dashboard.js"></script>
   <script async id="chartjsScript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
