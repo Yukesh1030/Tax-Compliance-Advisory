@@ -43,16 +43,20 @@
     var tabPanels = document.querySelectorAll(".dash-tab-panel[data-panel]");
 
     function switchTab(tabId) {
+      var activePanel = null;
       navBtns.forEach(function (btn) {
         btn.classList.toggle("is-active", btn.dataset.tab === tabId);
       });
       tabPanels.forEach(function (panel) {
         var active = panel.dataset.panel === tabId;
         panel.classList.toggle("is-active", active);
-        if (active && typeof gsap !== "undefined") {
-          gsap.fromTo(panel, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" });
-        }
+        if (active) activePanel = panel;
       });
+      if (activePanel && window.StacklyDashboardUI && window.StacklyDashboardUI.animateTabPanel) {
+        window.StacklyDashboardUI.animateTabPanel(activePanel);
+      } else if (activePanel && typeof gsap !== "undefined") {
+        gsap.fromTo(activePanel, { opacity: 0.15, y: 12 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out", clearProps: "transform,opacity" });
+      }
       if (window.innerWidth < 1024) setSidebar(false);
     }
 

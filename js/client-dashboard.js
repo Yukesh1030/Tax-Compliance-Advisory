@@ -45,16 +45,20 @@
     var tabPanels = document.querySelectorAll(".dash-tab-panel[data-panel]");
 
     function switchTab(tabId) {
+      var activePanel = null;
       navBtns.forEach(function (btn) {
         btn.classList.toggle("is-active", btn.dataset.tab === tabId);
       });
       tabPanels.forEach(function (panel) {
         var active = panel.dataset.panel === tabId;
         panel.classList.toggle("is-active", active);
-        if (active && typeof gsap !== "undefined") {
-          gsap.fromTo(panel, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" });
-        }
+        if (active) activePanel = panel;
       });
+      if (activePanel && window.StacklyDashboardUI && window.StacklyDashboardUI.animateTabPanel) {
+        window.StacklyDashboardUI.animateTabPanel(activePanel);
+      } else if (activePanel && typeof gsap !== "undefined") {
+        gsap.fromTo(activePanel, { opacity: 0.15, y: 12 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out", clearProps: "transform,opacity" });
+      }
       if (window.innerWidth < 1024) setSidebar(false);
     }
 
@@ -171,6 +175,34 @@
     });
 
     /* Client Consultation & Support Request Forms */
+    function prependClientTicket(code, subject, advisor) {
+      var ticketsTbody = document.getElementById("clientTicketsTbody");
+      if (!ticketsTbody) return;
+      var tr = document.createElement("tr");
+      var tdCode = document.createElement("td");
+      var strong = document.createElement("strong");
+      strong.textContent = code;
+      tdCode.appendChild(strong);
+
+      var tdSub = document.createElement("td");
+      tdSub.textContent = subject;
+
+      var tdAdv = document.createElement("td");
+      tdAdv.textContent = advisor;
+
+      var tdSla = document.createElement("td");
+      tdSla.textContent = "Same Business Day";
+
+      var tdStat = document.createElement("td");
+      var badge = document.createElement("span");
+      badge.className = "status-badge status-badge--gold";
+      badge.textContent = "Queued (Demo)";
+      tdStat.appendChild(badge);
+
+      tr.append(tdCode, tdSub, tdAdv, tdSla, tdStat);
+      ticketsTbody.prepend(tr);
+    }
+
     var consultForm = document.getElementById("clientConsultForm");
     if (consultForm) {
       consultForm.addEventListener("submit", function (e) {
@@ -183,10 +215,15 @@
         if (msgList) {
           var item = document.createElement("div");
           item.className = "dash-popover-item";
-          item.innerHTML = "<strong>Consultation Request: " + tVal + "</strong><span>Assigned to Senior Partner Desk — Demo Confirmation</span>";
+          var titleEl = document.createElement("strong");
+          titleEl.textContent = "Consultation Request: " + tVal;
+          var spanEl = document.createElement("span");
+          spanEl.textContent = "Assigned to Senior Partner Desk — Demo Confirmation";
+          item.append(titleEl, spanEl);
           msgList.prepend(item);
         }
         addClientNotif("Consultation Requested", tVal + " scheduled for review.");
+        prependClientTicket("#CNS-4108", tVal, "Rajesh Nair");
         if (fb) {
           fb.className = "form-feedback form-feedback--success is-visible";
           fb.textContent = "Consultation request sent to your dedicated advisor (demo).";
@@ -205,6 +242,7 @@
         if (!sVal) return;
 
         addClientNotif("Support Ticket Opened", sVal);
+        prependClientTicket("#STK-8042", sVal, "Client Operations Desk");
         if (fb) {
           fb.className = "form-feedback form-feedback--success is-visible";
           fb.textContent = "Support ticket registered (Demo Reference #STK-8042).";
